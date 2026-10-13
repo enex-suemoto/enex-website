@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<title>株式会社エネックス パンフレット</title>
+<!-- パンフレットの元（A4縦4ページ）。売るものは基幹システム。ヒアリングから予算配分・見積もりへ導く構成。
+     詳しい情報は、後に AIエージェントへの問い合わせで得られる形にする。Chromeで A4 縦の PDF に書き出す（書き出し方は DESIGN.md） -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#ffffff;color:#000000;font-family:'Noto Sans JP','Hiragino Sans',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pg{position:relative;width:210mm;height:297mm;padding:17mm 18mm 14mm;overflow:hidden;page-break-after:always;break-after:page}
+.pg:last-child{page-break-after:auto;break-after:auto}
+.lbl{font-size:7.5pt;font-weight:700;letter-spacing:.3em;color:#fb7132;margin:0 0 2mm}
+h2{font-size:19.5pt;font-weight:900;line-height:1.45;margin:0 0 3mm;letter-spacing:.01em}
+h2 em,h1 em{font-style:normal;color:#fb7132}
+p{font-size:10pt;line-height:1.95;margin:0 0 4mm;color:rgba(0,0,0,.78)}
+.sec{margin-bottom:11mm}
+.rule{height:.6pt;background:rgba(255,148,26,.45);margin:0 0 10mm}
+.grid{display:grid;gap:3mm}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.card{border:.7pt solid rgba(255,148,26,.6);border-radius:3mm;padding:5mm 4.5mm;background:#ffffff}
+.card b{display:block;font-size:11.5pt;font-weight:900;margin-bottom:1mm}
+.card span{display:block;font-size:9pt;line-height:1.65;color:rgba(0,0,0,.7)}
+.card .pr{margin-top:1.8mm;font-size:10pt;font-weight:900;color:#fb7132}
+.card.base{border:1.4pt solid #fb7132}
+.feat{display:flex;gap:3mm;align-items:flex-start}
+.feat i{flex:none;width:11mm;height:11mm;border-radius:2mm;background:rgba(255,148,26,.2);color:#fb7132;font-style:normal;font-weight:900;font-size:11pt;display:flex;align-items:center;justify-content:center}
+.feat b{display:block;font-size:11.5pt;font-weight:900}
+.feat span{font-size:9pt;line-height:1.6;color:rgba(0,0,0,.7)}
+table{width:100%;border-collapse:collapse;font-size:9.5pt;line-height:1.6}
+th,td{border-bottom:.5pt solid rgba(255,148,26,.5);padding:3.2mm 2mm;text-align:left}
+thead th{font-size:7.5pt;color:rgba(0,0,0,.55);font-weight:700}
+td.me{font-weight:900}
+.same{margin-top:5mm;border:1.4pt solid #fb7132;border-radius:3mm;padding:4.5mm;text-align:center;font-size:14pt;font-weight:900}
+.same em{font-style:normal;color:#fb7132}
+.flow{display:flex;margin:2mm 0 0}
+.flow div{flex:1;text-align:center;font-size:9.5pt;font-weight:700;padding:4.5mm 1mm;color:#fff;margin-right:-2mm;clip-path:polygon(0 0,calc(100% - 3.5mm) 0,100% 50%,calc(100% - 3.5mm) 100%,0 100%,3.5mm 50%);line-height:1.35}
+.flow div:first-child{clip-path:polygon(0 0,calc(100% - 3.5mm) 0,100% 50%,calc(100% - 3.5mm) 100%,0 100%)}
+.ok li,.ng li{font-size:10pt;line-height:1.75;margin-bottom:2.5mm;list-style:none;position:relative;padding-left:6mm}
+.ok,.ng{margin:2mm 0 0;padding:0}
+.ok li::before{content:'';position:absolute;left:.5mm;top:1.6mm;width:3mm;height:1.5mm;border-left:1.6pt solid #fb7132;border-bottom:1.6pt solid #fb7132;transform:rotate(-45deg)}
+.ng li::before{content:'';position:absolute;left:.5mm;top:2.4mm;width:3mm;height:1.6pt;background:#3a3d7e}
+.box{border-radius:3mm;padding:6mm 5.5mm}
+.box.o{border:1.2pt solid #fb7132}
+.box.n{border:1.2pt solid #3a3d7e}
+.box h3{margin:0 0 2mm;font-size:13pt;font-weight:900}
+.box.o h3{color:#fb7132}.box.n h3{color:#3a3d7e}
+.foot{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;font-size:7pt;color:rgba(0,0,0,.5)}
+/* 表紙 */
+.cover{padding:0}
+.cover .in{padding:17mm 18mm 0;position:relative;height:215mm}
+.cover .head{display:flex;justify-content:space-between;align-items:flex-start}
+.cover .head img{width:10.4mm}
+.cover .head .t{font-size:8pt;letter-spacing:.05em;line-height:1.9;color:rgba(0,0,0,.6);text-align:right}
+.cover .kick{font-size:10pt;font-weight:700;letter-spacing:.2em;color:#fb7132;margin:16mm 0 4mm}
+.cover h1{font-size:31pt;font-weight:900;line-height:1.38;margin:0}
+.cover .sub{font-size:9.6pt;line-height:1.9;margin-top:6mm;color:rgba(0,0,0,.75)}
+.cover .stairs{position:absolute;right:14mm;bottom:4mm;width:108mm;height:auto}
+.cover .band{position:absolute;left:0;right:0;bottom:0;height:82mm;background:#000000;color:#ffffff;padding:11mm 18mm 0}
+.pts{display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
+.pt{border-top:1.2pt solid #fb7132;padding-top:3.5mm}
+.pt small{display:block;font-size:7.5pt;letter-spacing:.25em;color:#ff941a;font-weight:700;margin-bottom:1.5mm}
+.pt b{display:block;font-size:11.5pt;line-height:1.5;margin-bottom:2mm}
+.pt span{display:block;font-size:8pt;line-height:1.7;color:rgba(255,255,255,.75)}
+.cover .co{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;align-items:center;font-size:8pt;color:rgba(255,255,255,.7)}
+.cover .co b{font-size:10pt;color:#fff;letter-spacing:.2em;margin-right:4mm}
+/* 最後の帯 */
+.endband{position:absolute;left:0;right:0;bottom:0;background:#000000;color:#ffffff;padding:12mm 18mm;display:flex;gap:7mm;align-items:center}
+.endband img{width:10.4mm}
+.endband .m{font-size:11pt;font-weight:900;margin-bottom:2mm}
+.endband .c{font-size:12pt;font-weight:900;letter-spacing:.2em;margin-bottom:1.5mm}
+.endband p{margin:0;font-size:8.5pt;line-height:1.75;color:rgba(255,255,255,.8)}
+</style></head><body>
+
+<!-- 1：表紙 -->
+<section class="pg cover">
+ <div class="in">
+  <div class="head"><img src="../assets/logo-orange.png" alt="ENEX"><div class="t">株式会社エネックス</div></div>
+  <div class="kick">現在を変える　未来を自由に決める</div>
+  <h1>中小企業のための<br><em>基幹システム構築</em></h1>
+  <div class="sub">御社の仕組みを、システムにするお手伝いをします。<br>受発注・在庫・帳票・帳簿・会計データまで、<br>いつもの表を入口のまま、ひとつにつなぎます。</div>
+  <!--STAIRS-->
+ </div>
+ <div class="band">
+  <div class="pts">
+   <div class="pt"><small>POINT 01</small><b>小さく作るから<br>無駄がない</b><span>中小企業の規模に合わせて作るので、大企業向けの大がかりな費用がかかりません。</span></div>
+   <div class="pt"><small>POINT 02</small><b>エネックスのAIで<br>費用を最小限に</b><span>AIが業務の流れと状況を解析し、何をシステムにするかの方向性を定めます。</span></div>
+   <div class="pt"><small>POINT 03</small><b>拠点の業務の一元化<br>200万円以下が目安</b><span>条件に合うかを、最初のヒアリングで確かめます。カスタムオーダーも可能です。</span></div>
+  </div>
+  <div class="co"><span><b>株式会社エネックス</b>ENEX Corporation</span><span>TEL 0940-22-8558　info@enex.one</span></div>
+ </div>
+</section>
+
+<!-- 2：何をするか／なぜ中小企業も使えるか -->
+<section class="pg">
+ <div class="sec"><div class="lbl">WHAT WE DO</div>
+  <h2>企業の仕組みを　<em>システムにする</em></h2>
+  <p>当社が売るものは、基幹システムです。御社が今の表計算で回している仕事の型をそのまま土台にして、仕事がひとつにつながる仕組みを組み立てます。入力のやり方は今のまま。覚え直しはいりません。</p>
+  <div class="grid g2" style="gap:4mm 8mm">
+   <div class="feat"><i>受</i><div><b>受発注</b><span>発注・受注・納品を、いつもの表に入力するだけで記録</span></div></div>
+   <div class="feat"><i>在</i><div><b>在庫管理</b><span>入庫・出庫で在庫が自動で増減。棚卸の記録も残る</span></div></div>
+   <div class="feat"><i>票</i><div><b>帳票</b><span>発注書・納品書・請求書を、入力した内容からそのまま作成</span></div></div>
+   <div class="feat"><i>帳</i><div><b>帳簿管理</b><span>入金と出金を記録し、銀行の入金データとの照合もまとめて</span></div></div>
+   <div class="feat"><i>会</i><div><b>会計データの出力</b><span>お使いの会計ソフトや会計事務所が求める形式で出力</span></div></div>
+   <div class="feat"><i>集</i><div><b>集計と取り出し</b><span>同じ形で一か所に集めるので、必要な時に必要な形ですぐ取り出せる</span></div></div>
+  </div></div>
+ <div class="rule"></div>
+ <div class="sec"><div class="lbl">WHY SMALL</div>
+  <h2>小さく作るから　<em>無駄がない</em></h2>
+  <p>大企業のシステムは、何百人、何千人が同時に使っても止まらないための「備え」に費用の多くを使います。同時に入力する方が20名程度までなら、その備えは要りません。開発の規模が小さいことが、そのまま費用の小ささになります。</p>
+  <table><thead><tr><th></th><th>大企業向け</th><th style="color:#fb7132">当社（20名程度まで）</th></tr></thead><tbody>
+   <tr><th>同時に使う人を受け止める備え</th><td>大きなサーバーを何台も</td><td class="me">規模に合った分だけ</td></tr>
+   <tr><th>機能・画面・権限</th><td>多く、まとめる仕組みも複雑</td><td class="me">必要な分だけ、すっきり</td></tr>
+   <tr><th>求められる速さ</th><td>大勢を待たせない高い性能</td><td class="me">普通の性能で、誰も待たない</td></tr>
+  </tbody></table>
+  <div class="same">目的と信頼性は　<em>どちらも同じ</em></div></div>
+ <div class="foot"><span>株式会社エネックス</span><span>02</span></div>
+</section>
+
+<!-- 3：AI解析で方向性を定める／カスタムオーダーと予算配分 -->
+<section class="pg">
+ <div class="sec"><div class="lbl">AI ANALYSIS</div>
+  <h2>エネックスのAIが　<em>方向性を定める</em></h2>
+  <p>御社の業務の流れと現在の状況を、エネックスのAIシステムが解析します。仕組みづくりの経験から生まれた独自の手法を、AIに組み込んでいます。だから、どこを仕組みにすれば最も効果が出るかを、短い時間で見極められます。調べる手間を減らした分、費用を最小限に抑えます。</p>
+  <div class="flow"><div style="background:#ff941a">ヒアリング</div><div style="background:#fb7132">業務の流れと<br>状況の解析</div><div style="background:#373eb9">方向性を<br>定める</div><div style="background:#3a3d7e">予算に合わせて<br>配分する</div><div style="background:#000000">お見積もり</div></div></div>
+ <div class="rule" style="margin-top:7mm"></div>
+ <div class="sec"><div class="lbl">CUSTOM ORDER</div>
+  <h2>基本の形に　<em>欲しいものを足していく</em></h2>
+  <p>基本の形に加えて、必要なものを選んで足せます。カスタムオーダーも可能です。ご予算の中で、どこに配分すると効果が大きいかを一緒に決めます。</p>
+  <div class="grid g3">
+   <div class="card base"><b>基本：拠点の一元化</b><span>受発注から帳票・帳簿・会計データ出力までを、ひとつにつなぐ</span><div class="pr">200万円以下が目安</div></div>
+   <div class="card"><b>必要な業務だけ</b><span>今いちばん困っている業務から始める</span><div class="pr">お見積もり</div></div>
+   <div class="card"><b>営業所ごとに広げる</b><span>本社を中心に、営業所ごとの仕組みを足す</span><div class="pr">お見積もり</div></div>
+   <div class="card"><b>AI：アップデート対応型</b><span>最初から記録の仕組みを入れ、将来の自動化に備える</span><div class="pr">10万円程度から</div></div>
+   <div class="card"><b>AI：後から加える</b><span>使ってみて、必要になった時にAIを加える</span><div class="pr">20万円程度から<br><small style="font-size:7.5pt">運用費 月5,000円程度から</small></div></div>
+   <div class="card"><b>カスタムオーダー</b><span>専用の入力画面など、御社の要望に合わせて作り込む</span><div class="pr">お見積もり</div></div>
+  </div>
+  <p style="font-size:8pt;color:rgba(0,0,0,.55);margin-top:2.5mm">※費用は業務の内容と範囲により異なります。</p></div>
+ <div class="sec" style="margin-bottom:0"><div class="lbl">AI AUTOMATION</div>
+  <div class="grid g3">
+   <div class="card"><b>決まった時に動く</b><span>締め日や入金など、決めておいた条件で作業を自動で始める</span></div>
+   <div class="card"><b>読んで入力する</b><span>届いた書類を読み取ってデータにし、必要な値を入力する</span></div>
+   <div class="card"><b>届いたものを把握する</b><span>メールや書類を読み込み、やることの一覧に加える</span></div>
+  </div></div>
+ <div class="foot"><span>株式会社エネックス</span><span>03</span></div>
+</section>
+
+<!-- 4：条件の確認（ヒアリング）と進め方／連絡先 -->
+<section class="pg">
+ <div class="sec"><div class="lbl">HEARING</div>
+  <h2>まずは　<em>条件に合うか</em>を確かめます</h2>
+  <p>拠点のメイン業務の一元化は、200万円以下を想定しています。この目安に収まるかは、いくつかの条件によります。最初のヒアリングで、御社の業務が合うかを確かめます。</p>
+  <div class="grid g2" style="gap:4mm">
+   <div class="box o"><h3>目安に収まりやすい</h3><ul class="ok">
+    <li>同時に入力する方が20名程度まで</li><li>入力は今の表計算のまま</li><li>扱うデータを、同じ形で一か所に集められる</li><li>ひとつの拠点の、中心となる業務</li></ul></div>
+   <div class="box n"><h3>別の形でご提案する場合</h3><ul class="ng">
+    <li>データの形がまったく違う業務を、同じシステムに収めたい</li><li>性質の異なる複数の事業を、ひとつにまとめたい</li><li>拠点ごとに、独立した仕組みが必要</li></ul>
+    <p style="font-size:8.5pt;margin:2mm 0 0">同じシステムに収めるのが難しい場合があります。その時は、無理にひとつにせず、ご予算に合う形をご提案します。</p></div>
+  </div>
+  <div class="same" style="text-align:left;font-size:12pt;padding:4.5mm 5.5mm">費用の境目は　<em>データを集積する場所の数</em><p style="font-size:9pt;font-weight:400;margin:1.5mm 0 0">基本は、データを一か所に集め、同じ形にそろえて使う仕組みです。性質の違うデータを別々に集めて、それぞれ違う形の仕組みを作ると、つなぎ方が掛け算で複雑になるため、別にお見積もりします。</p></div></div>
+ <div class="rule"></div>
+ <div class="sec"><div class="lbl">PROCESS</div>
+  <h2>導入の進め方</h2>
+  <div class="flow"><div style="background:#ff941a">ヒアリング</div><div style="background:#fb7132">業務の調査</div><div style="background:#373eb9">設計</div><div style="background:#3a3d7e">構築</div><div style="background:#000000">動作の確認<br>運用サポート</div></div>
+  <p style="margin-top:4mm">範囲は最初に定め、書面で確かめ合ってから取り組みます。使いながら、方向はいつでも見直せます。</p></div>
+ <div class="endband"><img src="../assets/logo-orange.png" alt="ENEX"><div>
+  <div class="m">まずは、いま使っている表を見せてください。</div>
+  <div class="c">株式会社エネックス</div>
+  <p>〒811-4183 福岡県宗像市土穴4丁目8-1<br>TEL 0940-22-8558　FAX 050-1716-0028<br>Mail info@enex.one</p></div></div>
+</section>
+</body></html>
