@@ -89,6 +89,7 @@
  }
  function close(){document.body.classList.remove('mj-open');p.classList.remove('open');tab.setAttribute('aria-expanded','false');S.open=false;save();}
  tab.addEventListener('click',()=>open());
+ document.querySelectorAll('[data-majes-open]').forEach(b=>b.addEventListener('click',()=>{open();inp.focus();}));
  p.querySelector('.mj-close').addEventListener('click',close);
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&p.classList.contains('open'))close();});
  if(S.open)open(false);
