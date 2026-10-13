@@ -28,10 +28,16 @@
   +'</g>';
  // 案内役の絵：画像（線だけの透明PNG）があればそれを3枚重ね、無ければ線のSVG
  const IMG='assets/majes-holo.png?v=20261013s';
+ // 周りに浮かべる小さな形（点・輪・線・角）。位置・大きさ・速さは毎回無作為
+ let bits='';
+ for(let i=0;i<16;i++){
+  const k=['dot','dot','ring','dash','sq'][i%5],s=(2+Math.random()*4).toFixed(1);
+  bits+='<i class="'+k+'" style="--x:'+(Math.random()*100).toFixed(0)+'%;--y:'+(20+Math.random()*80).toFixed(0)+'%;--s:'+s+'px;--d:'+(3.5+Math.random()*5).toFixed(1)+'s;--dl:-'+(Math.random()*8).toFixed(1)+'s;--mx:'+(-14+Math.random()*28).toFixed(0)+'px"></i>';
+ }
  const HOLO=IMG
-  ?'<div class="mj-holo img'+(RM?' rm':'')+'"><div class="base"></div>'
-   +'<img class="ly a" src="'+IMG+'" alt=""><img class="ly b" src="'+IMG+'" alt=""><img class="ly c" src="'+IMG+'" alt="">'
-   +'<div class="scan"></div></div>'
+  ?'<div class="mj-holo img'+(RM?' rm':'')+'"><div class="base"></div><div class="bits">'+bits+'</div>'
+   +'<div class="figwrap"><img class="ly a" src="'+IMG+'" alt=""><img class="ly b" src="'+IMG+'" alt=""><img class="ly c" src="'+IMG+'" alt=""></div>'
+   +'<div class="wave"><i></i><i></i><i></i></div><div class="scan"></div></div>'
   :'<div class="mj-holo'+(RM?' rm':'')+'"><div class="base"></div>'
    +'<svg viewBox="0 0 200 214" aria-hidden="true">'
    +'<g class="ly a">'+FIG+'</g><g class="ly b">'+FIG+'</g><g class="ly c">'+FIG+'</g>'
@@ -43,7 +49,7 @@
  tab.innerHTML='<i></i>Call MAJES';
  const p=document.createElement('aside');
  p.className='mj-panel';p.id='mj-panel';p.setAttribute('aria-label','MAJES 相談窓口');
- p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">MAJES<small>株式会社エネックス　案内役</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
+ p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">agentMAJES<small>フロントアドバイザー</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
   +'<div class="mj-log" aria-live="polite"></div>'
   +'<div class="mj-line" hidden><p></p><a class="mj-linebtn" target="_blank" rel="noopener">LINE で友だち登録</a></div>'
   +'<form class="mj-form"><input type="text" autocomplete="off" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"><button type="submit">送る</button></form>'

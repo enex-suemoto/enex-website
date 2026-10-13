@@ -419,15 +419,15 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 @keyframes mjPing{0%{box-shadow:0 0 0 0 rgba(255,148,26,.6)}70%{box-shadow:0 0 0 9px rgba(255,148,26,0)}100%{box-shadow:0 0 0 0 rgba(255,148,26,0)}}
 .mj-panel{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100%;z-index:31;background:#fff;box-shadow:-6px 0 28px rgba(0,0,0,.22);transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;font-family:'Noto Sans JP','Hiragino Sans',sans-serif}
 .mj-panel.open{transform:none}.mj-panel.noanim{transition:none}
-.mj-head{position:relative;background:#3a3d7e;color:#fff;height:210px;flex:none;overflow:hidden}
-.mj-name{position:absolute;left:18px;bottom:16px;font-weight:900;font-size:20px;letter-spacing:.14em;line-height:1.2}
-.mj-name small{display:block;font-size:11px;font-weight:400;letter-spacing:.12em;opacity:.8;margin-top:4px}
-.mj-close{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+.mj-head{position:relative;background:#3a3d7e radial-gradient(ellipse at 80% 50%,rgba(0,0,0,0),rgba(0,0,0,.45) 75%);color:#fff;height:96px;flex:none;overflow:hidden}
+.mj-name{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-weight:900;font-size:19px;letter-spacing:.08em;line-height:1.2}
+.mj-name small{display:block;font-size:11px;font-weight:400;letter-spacing:.14em;opacity:.85;margin-top:5px}
+.mj-close{position:absolute;top:8px;right:8px;width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer}
 .mj-close:hover{background:rgba(255,255,255,.26)}
 /* ホログラム風の案内役：線のシルエットを3枚ずらして重ね、各層を別々に揺らして立体に見せる */
-.mj-holo{position:absolute;right:22px;top:6px;width:190px;height:204px}
+.mj-holo{position:absolute;right:56px;top:6px;width:72px;height:84px}
 .mj-holo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.mj-holo .base{position:absolute;left:50%;bottom:-8px;width:170px;height:26px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),rgba(55,62,185,.45) 45%,rgba(55,62,185,0) 72%);animation:mjBase 3s ease-in-out infinite}
+.mj-holo .base{position:absolute;left:50%;bottom:-6px;width:70px;height:12px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),rgba(55,62,185,.45) 45%,rgba(55,62,185,0) 72%);animation:mjBase 3s ease-in-out infinite}
 .mj-holo .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none;overflow:hidden}
 .mj-holo .scan::after{content:'';position:absolute;left:0;right:0;height:38px;top:-40px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.22),rgba(255,255,255,0));animation:mjScan 4.6s linear infinite}
 .mj-holo path{fill:none;stroke:#fff;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
@@ -470,7 +470,7 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .mj-form input:focus{outline:none;border-color:#373eb9}
 .mj-form button{border:0;background:#fb7132;color:#fff;font-weight:700;padding:0 18px;border-radius:999px;font-size:13px;cursor:pointer;font-family:inherit}
 .mj-note{margin:0;padding:0 16px 12px;font-size:10.5px;line-height:1.6;color:rgba(0,0,0,.5)}
-@media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:190px}.mj-holo{right:8px;transform:scale(.9);transform-origin:right top}.mj-form input{font-size:16px}}
+@media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:90px}.mj-holo{right:48px}.mj-form input{font-size:16px}}
 /* 画像版の案内役：線だけの透明PNGを3枚ずらして重ね、各層を別々に揺らす（画像は紺地で光って見える） */
 .mj-holo.img img.ly{position:absolute;left:50%;top:0;height:100%;width:auto;transform:translateX(-50%);filter:drop-shadow(0 0 4px rgba(255,255,255,.55)) drop-shadow(0 0 14px rgba(55,62,185,.9))}
 .mj-holo.img .ly.a{opacity:.35;animation:mjImA 5.2s ease-in-out infinite}
@@ -481,3 +481,20 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 @keyframes mjImB{0%,100%{transform:translateX(calc(-50% - 2px))}50%{transform:translateX(calc(-50% + 3px)) translateY(-2px)}}
 @keyframes mjImC{0%,100%{transform:translateX(calc(-50% + 3px)) skewX(1deg)}50%{transform:translateX(calc(-50% + 6px)) skewX(-1.5deg) translateY(1px)}}
 .mj-holo.img.rm .ly{animation-duration:12s,0s}
+/* 案内役は左（ページの側）を向く。周りに小さな形（点・輪・線）を無作為に浮かべ、話している間は速くし、口元から波紋を出す */
+.mj-holo .figwrap{position:absolute;inset:0;transform:scaleX(-1)}
+.mj-holo .figwrap img.ly{filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 8px rgba(55,62,185,.95))}
+.mj-holo .bits{position:absolute;inset:-30px -20px -10px -60px;pointer-events:none;--spd:1}
+.mj-holo.talk .bits{--spd:2.4}
+.mj-holo .bits i{position:absolute;display:block;left:var(--x);top:var(--y);width:var(--s);height:var(--s);opacity:0;animation:mjFloat calc(var(--d)/var(--spd)) linear infinite;animation-delay:var(--dl)}
+.mj-holo .bits i.dot{border-radius:50%;background:#fff}
+.mj-holo .bits i.ring{border-radius:50%;border:1px solid rgba(255,255,255,.8)}
+.mj-holo .bits i.dash{height:1px;width:calc(var(--s)*3);background:rgba(255,148,26,.9)}
+.mj-holo .bits i.sq{border:1px solid rgba(55,62,185,1);box-shadow:0 0 4px rgba(55,62,185,1);transform:rotate(45deg)}
+@keyframes mjFloat{0%{opacity:0;transform:translate(0,8px) scale(.6)}20%{opacity:.9}60%{opacity:.5}100%{opacity:0;transform:translate(var(--mx),-26px) scale(1.1)}}
+.mj-holo .wave{position:absolute;left:-10px;top:34%;width:14px;height:14px;pointer-events:none}
+.mj-holo .wave i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.8);opacity:0;transform:scale(.4)}
+.mj-holo.talk .wave i{animation:mjWave 1.4s ease-out infinite}
+.mj-holo.talk .wave i:nth-child(2){animation-delay:.45s}.mj-holo.talk .wave i:nth-child(3){animation-delay:.9s}
+@keyframes mjWave{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(3.2) translateX(-6px)}}
+.mj-holo.rm .bits i{animation-duration:calc(var(--d)*2)}.mj-holo.rm.talk .wave i{animation-duration:2.8s}
