@@ -410,3 +410,64 @@ footer .fl img{width:22px;height:auto}
 .moved{max-width:760px}
 .mv-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .btn.s2{border:1px solid #fb7132;color:#fb7132}
+
+/* ---- MAJES 呼び出しタブと対面画面（全ページ共通。js/majes.js が組み立てる） ---- */
+.mj-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:30;writing-mode:vertical-rl;background:#3a3d7e;color:#fff;border:0;border-radius:10px 0 0 10px;padding:18px 10px 18px 12px;font:700 13px/1 'Noto Sans JP','Hiragino Sans',sans-serif;letter-spacing:.22em;cursor:pointer;box-shadow:-2px 2px 10px rgba(0,0,0,.25);transition:transform .35s ease,opacity .3s,background .2s;display:flex;align-items:center;gap:10px}
+.mj-tab i{width:8px;height:8px;border-radius:50%;background:#ff941a;animation:mjPing 2.2s ease-out infinite}
+.mj-tab:hover{background:#373eb9}
+body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:none}
+@keyframes mjPing{0%{box-shadow:0 0 0 0 rgba(255,148,26,.6)}70%{box-shadow:0 0 0 9px rgba(255,148,26,0)}100%{box-shadow:0 0 0 0 rgba(255,148,26,0)}}
+.mj-panel{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:100%;z-index:31;background:#fff;box-shadow:-6px 0 28px rgba(0,0,0,.22);transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;font-family:'Noto Sans JP','Hiragino Sans',sans-serif}
+.mj-panel.open{transform:none}.mj-panel.noanim{transition:none}
+.mj-head{position:relative;background:#3a3d7e;color:#fff;height:210px;flex:none;overflow:hidden}
+.mj-name{position:absolute;left:18px;bottom:16px;font-weight:900;font-size:20px;letter-spacing:.14em;line-height:1.2}
+.mj-name small{display:block;font-size:11px;font-weight:400;letter-spacing:.12em;opacity:.8;margin-top:4px}
+.mj-close{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+.mj-close:hover{background:rgba(255,255,255,.26)}
+/* ホログラム風の案内役：線のシルエットを3枚ずらして重ね、各層を別々に揺らして立体に見せる */
+.mj-holo{position:absolute;right:22px;top:6px;width:190px;height:204px}
+.mj-holo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.mj-holo .base{position:absolute;left:50%;bottom:-8px;width:170px;height:26px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),rgba(55,62,185,.45) 45%,rgba(55,62,185,0) 72%);animation:mjBase 3s ease-in-out infinite}
+.mj-holo .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none;overflow:hidden}
+.mj-holo .scan::after{content:'';position:absolute;left:0;right:0;height:38px;top:-40px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.22),rgba(255,255,255,0));animation:mjScan 4.6s linear infinite}
+.mj-holo path{fill:none;stroke:#fff;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.mj-holo .body{fill:rgba(255,255,255,.07)}
+.mj-holo .pin{stroke:#ff941a;fill:#ff941a}
+.mj-holo .ly{transform-origin:100px 214px;filter:drop-shadow(0 0 3px rgba(255,255,255,.7))}
+.mj-holo .ly.a{opacity:.3;animation:mjLyA 5.2s ease-in-out infinite}
+.mj-holo .ly.b{opacity:.55;animation:mjLyB 6.1s ease-in-out infinite}
+.mj-holo .ly.c{opacity:1;animation:mjLyC 7s ease-in-out infinite}
+.mj-holo .fig{animation:mjFlick 3.7s steps(1,end) infinite}
+.mj-holo .head{transform-origin:100px 96px;animation:mjNod 6.3s ease-in-out infinite}
+.mj-holo .fore.l{transform-origin:56px 160px;animation:mjGl 9.1s ease-in-out infinite}
+.mj-holo .fore.r{transform-origin:144px 160px;animation:mjGr 7.3s ease-in-out infinite .8s}
+.mj-holo.talk .fore.l{animation-duration:4.2s}.mj-holo.talk .fore.r{animation-duration:3.4s}.mj-holo.talk .head{animation-duration:2.6s}
+@keyframes mjLyA{0%,100%{transform:translateX(-5px) skewX(-2deg)}50%{transform:translateX(-2px) skewX(1deg)}}
+@keyframes mjLyB{0%,100%{transform:translateX(-2px)}50%{transform:translateX(2px)}}
+@keyframes mjLyC{0%,100%{transform:translateX(2px) skewX(1deg)}50%{transform:translateX(5px) skewX(-1.5deg)}}
+@keyframes mjFlick{0%,31%,33%,64%,65.5%,100%{opacity:1}32%{opacity:.7}64.5%{opacity:.55}}
+@keyframes mjNod{0%,100%{transform:rotate(0)}18%{transform:rotate(-2.5deg)}40%{transform:rotate(1.5deg)}57%{transform:rotate(-1deg)}80%{transform:rotate(2deg)}}
+@keyframes mjGr{0%,100%{transform:rotate(0)}12%{transform:rotate(30deg)}20%{transform:rotate(22deg)}34%{transform:rotate(44deg)}46%{transform:rotate(12deg)}58%{transform:rotate(36deg)}72%{transform:rotate(0)}}
+@keyframes mjGl{0%,100%{transform:rotate(0)}22%{transform:rotate(0)}30%{transform:rotate(-26deg)}38%{transform:rotate(-18deg)}50%{transform:rotate(-38deg)}62%{transform:rotate(-8deg)}70%{transform:rotate(-30deg)}84%{transform:rotate(0)}}
+@keyframes mjBase{0%,100%{opacity:.8;transform:translateX(-50%) scaleX(1)}50%{opacity:1;transform:translateX(-50%) scaleX(1.06)}}
+@keyframes mjScan{0%{top:-40px}100%{top:104%}}
+/* 動きを減らす設定：手ぶり・頷きは半分の速さ、飾りの点滅は止める（C案） */
+.mj-holo.rm .fore.l{animation-duration:18s}.mj-holo.rm .fore.r{animation-duration:14.6s}.mj-holo.rm .head{animation-duration:12.6s}
+.mj-holo.rm .ly{animation-duration:12s}.mj-holo.rm .scan::after,.mj-holo.rm .fig{animation:none}
+@media (prefers-reduced-motion:reduce){.mj-tab i{animation:none}.mj-panel{transition:opacity .3s}.mj-panel:not(.open){opacity:0;pointer-events:none}}
+.mj-log{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:10px}
+.mj-m{max-width:86%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.mj-m.a{align-self:flex-start;background:rgba(55,62,185,.08);border-bottom-left-radius:4px}
+.mj-m.u{align-self:flex-end;background:rgba(255,148,26,.18);border-bottom-right-radius:4px}
+.mj-m.wait{display:flex;gap:5px;padding:12px 14px}.mj-m.wait i{width:7px;height:7px;border-radius:50%;background:#373eb9;animation:mjDot 1.2s infinite}.mj-m.wait i:nth-child(2){animation-delay:.2s}.mj-m.wait i:nth-child(3){animation-delay:.4s}
+@keyframes mjDot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.mj-line{margin:0 16px 10px;padding:12px 14px;border:1px solid rgba(55,62,185,.35);border-radius:12px;font-size:12.5px;line-height:1.7;background:rgba(55,62,185,.04)}
+.mj-line p{margin:0 0 10px}
+.mj-linebtn{display:block;text-align:center;background:#373eb9;color:#fff;text-decoration:none;font-weight:700;padding:10px;border-radius:999px;font-size:13px;letter-spacing:.08em}
+.mj-linebtn.soon{background:rgba(0,0,0,.35);pointer-events:none}
+.mj-form{display:flex;gap:8px;padding:10px 16px;border-top:1px solid rgba(0,0,0,.08)}
+.mj-form input{flex:1;border:1px solid rgba(0,0,0,.25);border-radius:999px;padding:10px 14px;font-size:14px;font-family:inherit;min-width:0}
+.mj-form input:focus{outline:none;border-color:#373eb9}
+.mj-form button{border:0;background:#fb7132;color:#fff;font-weight:700;padding:0 18px;border-radius:999px;font-size:13px;cursor:pointer;font-family:inherit}
+.mj-note{margin:0;padding:0 16px 12px;font-size:10.5px;line-height:1.6;color:rgba(0,0,0,.5)}
+@media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:190px}.mj-holo{right:8px;transform:scale(.9);transform-origin:right top}.mj-form input{font-size:16px}}
