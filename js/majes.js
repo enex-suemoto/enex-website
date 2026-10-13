@@ -26,10 +26,16 @@
   +'<g class="arm l"><path d="M64 112c-6 14-9 30-8 48"/><g class="fore l"><path d="M56 160c6 8 14 14 24 16"/><path class="hand" d="M80 176c3-1 6 0 8 2c0 3-2 5-5 5c-3 0-5-2-6-4M82 178l4-3M85 179l4-2M87 181l3-1"/></g></g>'
   +'<g class="arm r"><path d="M136 112c6 14 9 30 8 48"/><g class="fore r"><path d="M144 160c-6 8-14 14-24 16"/><path class="hand" d="M120 176c-3-1-6 0-8 2c0 3 2 5 5 5c3 0 5-2 6-4M118 178l-4-3M115 179l-4-2M113 181l-3-1"/></g></g>'
   +'</g>';
- const HOLO='<div class="mj-holo'+(RM?' rm':'')+'"><div class="base"></div>'
-  +'<svg viewBox="0 0 200 214" aria-hidden="true">'
-  +'<g class="ly a">'+FIG+'</g><g class="ly b">'+FIG+'</g><g class="ly c">'+FIG+'</g>'
-  +'</svg><div class="scan"></div></div>';
+ // 案内役の絵：画像（線だけの透明PNG）があればそれを3枚重ね、無ければ線のSVG
+ const IMG='assets/majes-holo.png?v=20261013s';
+ const HOLO=IMG
+  ?'<div class="mj-holo img'+(RM?' rm':'')+'"><div class="base"></div>'
+   +'<img class="ly a" src="'+IMG+'" alt=""><img class="ly b" src="'+IMG+'" alt=""><img class="ly c" src="'+IMG+'" alt="">'
+   +'<div class="scan"></div></div>'
+  :'<div class="mj-holo'+(RM?' rm':'')+'"><div class="base"></div>'
+   +'<svg viewBox="0 0 200 214" aria-hidden="true">'
+   +'<g class="ly a">'+FIG+'</g><g class="ly b">'+FIG+'</g><g class="ly c">'+FIG+'</g>'
+   +'</svg><div class="scan"></div></div>';
 
  // 画面の組み立て
  const tab=document.createElement('button');

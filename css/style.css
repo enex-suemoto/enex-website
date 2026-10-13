@@ -471,3 +471,13 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .mj-form button{border:0;background:#fb7132;color:#fff;font-weight:700;padding:0 18px;border-radius:999px;font-size:13px;cursor:pointer;font-family:inherit}
 .mj-note{margin:0;padding:0 16px 12px;font-size:10.5px;line-height:1.6;color:rgba(0,0,0,.5)}
 @media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:190px}.mj-holo{right:8px;transform:scale(.9);transform-origin:right top}.mj-form input{font-size:16px}}
+/* 画像版の案内役：線だけの透明PNGを3枚ずらして重ね、各層を別々に揺らす（画像は紺地で光って見える） */
+.mj-holo.img img.ly{position:absolute;left:50%;top:0;height:100%;width:auto;transform:translateX(-50%);filter:drop-shadow(0 0 4px rgba(255,255,255,.55)) drop-shadow(0 0 14px rgba(55,62,185,.9))}
+.mj-holo.img .ly.a{opacity:.35;animation:mjImA 5.2s ease-in-out infinite}
+.mj-holo.img .ly.b{opacity:.6;animation:mjImB 6.1s ease-in-out infinite}
+.mj-holo.img .ly.c{opacity:1;animation:mjImC 7s ease-in-out infinite,mjFlick 3.7s steps(1,end) infinite}
+.mj-holo.img.talk .ly.c{animation-duration:3.5s,1.9s}
+@keyframes mjImA{0%,100%{transform:translateX(calc(-50% - 7px)) skewX(-2deg)}50%{transform:translateX(calc(-50% - 3px)) skewX(1deg) translateY(2px)}}
+@keyframes mjImB{0%,100%{transform:translateX(calc(-50% - 2px))}50%{transform:translateX(calc(-50% + 3px)) translateY(-2px)}}
+@keyframes mjImC{0%,100%{transform:translateX(calc(-50% + 3px)) skewX(1deg)}50%{transform:translateX(calc(-50% + 6px)) skewX(-1.5deg) translateY(1px)}}
+.mj-holo.img.rm .ly{animation-duration:12s,0s}
