@@ -38,9 +38,7 @@
   +'<div class="mj-line" hidden><p></p><a class="mj-linebtn" target="_blank" rel="noopener">LINE で友だち登録</a></div>'
   +'<form class="mj-form"><input type="text" autocomplete="off" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"><button type="submit">送る</button></form>'
   +'<p class="mj-note">この会話はブラウザを閉じるまで保持されます。お名前や連絡先は入力せず、詳しいご相談は LINE でお願いします。</p>';
- const bar=document.createElement('div');bar.className='mj-bar';
- bar.innerHTML='<span class="long">製品についての詳しい説明は　右のタブからエージェント <b>MAJES</b> をお呼びください。MAJES はエネックスのフロント役として、あらゆるご質問に自ら適切な答えを選んでお返しします。</span><span class="short">詳しい説明は　右のタブで <b>MAJES</b> を呼び出せます</span><button type="button" class="mj-barbtn" data-majes-open>Call MAJES</button>';
- document.body.append(tab,p,bar);document.body.classList.add('mj-bar-on');
+ document.body.append(tab,p);
  const log=p.querySelector('.mj-log'),form=p.querySelector('.mj-form'),inp=form.querySelector('input'),holo=p.querySelector('.mj-holo'),lineBox=p.querySelector('.mj-line');
  lineBox.querySelector('p').textContent=LINE_MSG;
  const lineBtn=lineBox.querySelector('.mj-linebtn');

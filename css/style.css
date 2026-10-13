@@ -503,15 +503,10 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .mj-holo.talk .wave i:nth-child(2){animation-delay:.45s}.mj-holo.talk .wave i:nth-child(3){animation-delay:.9s}
 @keyframes mjWave{0%{opacity:.9;transform:scale(.4)}100%{opacity:0;transform:scale(3.2) translateX(-6px)}}
 .mj-holo.rm .bits i{animation-duration:calc(var(--d)*2)}.mj-holo.rm.talk .wave i{animation-duration:2.8s}
-/* 画面の一番下に張り付く細い案内バー（全ページ共通。js/majes.js が置く） */
-body.mj-bar-on{padding-bottom:44px}
-.mj-bar{position:fixed;left:0;right:0;bottom:0;height:44px;z-index:29;background:#3a3d7e;color:#fff;display:flex;align-items:center;justify-content:center;gap:18px;padding:0 16px;font-size:13px;letter-spacing:.04em;box-shadow:0 -2px 10px rgba(0,0,0,.18);transition:transform .35s ease}
-.mj-bar b{font-weight:700}
-.mj-bar .mj-barbtn{border:1px solid #fff;background:transparent;color:#fff;font:700 11.5px/1 'Noto Sans JP','Hiragino Sans',sans-serif;letter-spacing:.18em;padding:8px 14px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
-.mj-bar .mj-barbtn::before{content:'';width:7px;height:7px;border-radius:50%;background:#ff941a}
-.mj-bar .mj-barbtn:hover{background:#fff;color:#3a3d7e}
-body.mj-open .mj-bar{transform:translateY(100%)}
-@media (max-width:600px){.mj-bar{font-size:11.5px;gap:10px;padding:0 12px}.mj-bar .long{display:none}}
-@media (min-width:601px){.mj-bar .short{display:none}}
 /* スマホではメニューの「システムについて」を「システム」に縮める（1行に収めるため） */
 @media (max-width:600px){header.top nav a{margin-left:12px;font-size:11.5px}header.top nav a.cta{padding:6px 9px}.pcw{display:none}}
+/* システムについて：MAJES の案内枠、コンパクトなエレベーター */
+.mjguide{margin-top:28px;padding:20px 24px;border:1px solid rgba(55,62,185,.35);border-left:4px solid #373eb9;border-radius:12px;background:rgba(55,62,185,.04);max-width:820px}
+.mjguide b{display:block;font-size:15px;font-weight:900;line-height:1.7;letter-spacing:.02em}
+.mjguide p{margin:8px 0 0;font-size:14px;line-height:1.9;color:rgba(0,0,0,.78)}
+.lift.compact{max-width:760px;margin-left:auto;margin-right:auto}
