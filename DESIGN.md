@@ -168,7 +168,7 @@
 ## 9. 残っている作業（2026-10-13 時点）
 
 切り替えの仕上げ
-- GitHub の Settings → Pages で、証明書の発行（3 of 3）が終わったら「Enforce HTTPS」にチェックを入れる。その後、https で開けるか・http から https へ切り替わるかを確かめる
+- 済（2026-10-13 23時台）：証明書発行・Enforce HTTPS 済。http://enex.one、http://www.enex.one、https://enex.one はすべて https://www.enex.one へ 301 転送、証明書は www.enex.one 用（Let's Encrypt、2027-01-11 まで。自動更新）
 - Googleサイトの設定 → カスタムドメインから www.enex.one の割り当てを外す（サイト自体は非公開にして控えとして残せる）
 - info@enex.one 宛てに外から1通送り、メールが届くことを確かめる
 
