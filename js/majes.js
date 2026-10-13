@@ -14,34 +14,18 @@
  if(!S||!S.sid)S={sid:Math.random().toString(36).slice(2)+Date.now().toString(36),open:false,msgs:[],line:false};
  const save=()=>{try{sessionStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
 
- // ホログラム風の案内役（線で描いた女性のシルエットを3枚重ねて立体に見せる）
- const FIG='<g class="fig">'
-  +'<g class="head"><path class="hair" d="M74 80C64 50 78 24 100 24c22 0 36 26 26 56c3 8-1 12-4 14M74 80c-3 8 1 12 4 14"/>'
-  +'<path class="face" d="M83 48c-1 22 6 36 17 38c11-2 18-16 17-38"/>'
-  +'<path class="bang" d="M80 50c7-9 19-12 32-7"/></g>'
-  +'<path d="M94 86l-1 14M106 86l1 14"/>'
-  +'<path class="body" d="M50 152c2-32 20-46 43-52l7 7l7-7c23 6 41 20 43 52v62H50z"/>'
-  +'<path d="M93 100l7 26l7-26"/>'
-  +'<path class="pin" d="M121 128l3-3l3 3l-3 3z"/>'
-  +'<g class="arm l"><path d="M64 112c-6 14-9 30-8 48"/><g class="fore l"><path d="M56 160c6 8 14 14 24 16"/><path class="hand" d="M80 176c3-1 6 0 8 2c0 3-2 5-5 5c-3 0-5-2-6-4M82 178l4-3M85 179l4-2M87 181l3-1"/></g></g>'
-  +'<g class="arm r"><path d="M136 112c6 14 9 30 8 48"/><g class="fore r"><path d="M144 160c-6 8-14 14-24 16"/><path class="hand" d="M120 176c-3-1-6 0-8 2c0 3 2 5 5 5c3 0 5-2 6-4M118 178l-4-3M115 179l-4-2M113 181l-3-1"/></g></g>'
-  +'</g>';
- // 案内役の絵：画像（線だけの透明PNG）があればそれを3枚重ね、無ければ線のSVG
- const IMG='assets/majes-holo.png?v=20261013s';
+ // 案内役：いただいた絵をコマ（200×140、5列）に切った線画の表を、3枚ずらして重ねて立体に見せる
+ //  idle = 静かに立っている20コマ、talk = 手ぶりの40コマ（5コマで1つの手ぶり、8種類）
+ const SHEET={idle:{src:'assets/majes-idle.png?v=20261013s',n:20},talk:{src:'assets/majes-talk.png?v=20261013s',n:40}};
  // 周りに浮かべる小さな形（点・輪・線・角）。位置・大きさ・速さは毎回無作為
  let bits='';
  for(let i=0;i<16;i++){
   const k=['dot','dot','ring','dash','sq'][i%5],s=(2+Math.random()*4).toFixed(1);
   bits+='<i class="'+k+'" style="--x:'+(Math.random()*100).toFixed(0)+'%;--y:'+(20+Math.random()*80).toFixed(0)+'%;--s:'+s+'px;--d:'+(3.5+Math.random()*5).toFixed(1)+'s;--dl:-'+(Math.random()*8).toFixed(1)+'s;--mx:'+(-14+Math.random()*28).toFixed(0)+'px"></i>';
  }
- const HOLO=IMG
-  ?'<div class="mj-holo img'+(RM?' rm':'')+'"><div class="base"></div><div class="bits">'+bits+'</div>'
-   +'<div class="figwrap"><img class="ly a" src="'+IMG+'" alt=""><img class="ly b" src="'+IMG+'" alt=""><img class="ly c" src="'+IMG+'" alt=""></div>'
-   +'<div class="wave"><i></i><i></i><i></i></div><div class="scan"></div></div>'
-  :'<div class="mj-holo'+(RM?' rm':'')+'"><div class="base"></div>'
-   +'<svg viewBox="0 0 200 214" aria-hidden="true">'
-   +'<g class="ly a">'+FIG+'</g><g class="ly b">'+FIG+'</g><g class="ly c">'+FIG+'</g>'
-   +'</svg><div class="scan"></div></div>';
+ const HOLO='<div class="mj-holo sp'+(RM?' rm':'')+'"><div class="base"></div><div class="bits">'+bits+'</div>'
+  +'<div class="figwrap"><div class="ly a"></div><div class="ly b"></div><div class="ly c"></div></div>'
+  +'<div class="wave"><i></i><i></i><i></i></div><div class="scan"></div></div>';
 
  // 画面の組み立て
  const tab=document.createElement('button');
@@ -71,9 +55,29 @@
  S.msgs.forEach(m=>bubble(m.r,m.t,false));
  if(S.line)lineBox.hidden=false;
 
- // 話している合図（返事が出ている間だけ手ぶりを速める）
- let talkT;
- function talk(ms){holo.classList.add('talk');clearTimeout(talkT);talkT=setTimeout(()=>holo.classList.remove('talk'),ms);}
+ // コマ送り：普段は idle を静かに繰り返し、話している間は手ぶり（5コマ）を無作為に選んで行き来する
+ const fw=holo.querySelector('.figwrap');
+ let mode='idle',fi=0,seq=null,talking=false,talkT;
+ function setFrame(sheet,i){fw.dataset.sheet=sheet;holo.style.setProperty('--fx',i%5);holo.style.setProperty('--fy',Math.floor(i/5));}
+ function glitch(){holo.classList.add('glitch');setTimeout(()=>holo.classList.remove('glitch'),180);}
+ function step(){
+  let wait=RM?440:220;
+  if(mode==='idle'){
+   fi=(fi+1)%SHEET.idle.n;setFrame('idle',fi);
+   if(talking){mode='talk';seq={row:Math.floor(Math.random()*8),k:0,dir:1};glitch();}
+  }else{
+   const f=seq.row*5+seq.k;setFrame('talk',f);wait=RM?300:150;
+   if(seq.dir>0&&seq.k===4){wait=500+Math.random()*700;seq.dir=-1;}            // 手を上げ切ったら少し保つ
+   else if(seq.dir<0&&seq.k===0){                                            // 手を戻し終えたら次へ
+    if(talking){seq={row:Math.floor(Math.random()*8),k:0,dir:1};wait=200+Math.random()*500;glitch();}
+    else{mode='idle';glitch();}
+   }
+   else seq.k+=seq.dir;
+  }
+  setTimeout(step,wait);
+ }
+ setFrame('idle',0);step();
+ function talk(ms){talking=true;holo.classList.add('talk');clearTimeout(talkT);talkT=setTimeout(()=>{talking=false;holo.classList.remove('talk');},ms);}
 
  // 開閉
  function open(anim){

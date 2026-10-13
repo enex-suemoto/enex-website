@@ -425,7 +425,7 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .mj-close{position:absolute;top:8px;right:8px;width:30px;height:30px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer}
 .mj-close:hover{background:rgba(255,255,255,.26)}
 /* ホログラム風の案内役：線のシルエットを3枚ずらして重ね、各層を別々に揺らして立体に見せる */
-.mj-holo{position:absolute;right:56px;top:6px;width:72px;height:84px}
+.mj-holo{position:absolute;right:34px;top:6px;width:120px;height:84px}
 .mj-holo svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .mj-holo .base{position:absolute;left:50%;bottom:-6px;width:70px;height:12px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.55),rgba(55,62,185,.45) 45%,rgba(55,62,185,0) 72%);animation:mjBase 3s ease-in-out infinite}
 .mj-holo .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);pointer-events:none;overflow:hidden}
@@ -470,20 +470,23 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .mj-form input:focus{outline:none;border-color:#373eb9}
 .mj-form button{border:0;background:#fb7132;color:#fff;font-weight:700;padding:0 18px;border-radius:999px;font-size:13px;cursor:pointer;font-family:inherit}
 .mj-note{margin:0;padding:0 16px 12px;font-size:10.5px;line-height:1.6;color:rgba(0,0,0,.5)}
-@media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:90px}.mj-holo{right:48px}.mj-form input{font-size:16px}}
-/* 画像版の案内役：線だけの透明PNGを3枚ずらして重ね、各層を別々に揺らす（画像は紺地で光って見える） */
-.mj-holo.img img.ly{position:absolute;left:50%;top:0;height:100%;width:auto;transform:translateX(-50%);filter:drop-shadow(0 0 4px rgba(255,255,255,.55)) drop-shadow(0 0 14px rgba(55,62,185,.9))}
-.mj-holo.img .ly.a{opacity:.35;animation:mjImA 5.2s ease-in-out infinite}
-.mj-holo.img .ly.b{opacity:.6;animation:mjImB 6.1s ease-in-out infinite}
-.mj-holo.img .ly.c{opacity:1;animation:mjImC 7s ease-in-out infinite,mjFlick 3.7s steps(1,end) infinite}
-.mj-holo.img.talk .ly.c{animation-duration:3.5s,1.9s}
-@keyframes mjImA{0%,100%{transform:translateX(calc(-50% - 7px)) skewX(-2deg)}50%{transform:translateX(calc(-50% - 3px)) skewX(1deg) translateY(2px)}}
-@keyframes mjImB{0%,100%{transform:translateX(calc(-50% - 2px))}50%{transform:translateX(calc(-50% + 3px)) translateY(-2px)}}
-@keyframes mjImC{0%,100%{transform:translateX(calc(-50% + 3px)) skewX(1deg)}50%{transform:translateX(calc(-50% + 6px)) skewX(-1.5deg) translateY(1px)}}
-.mj-holo.img.rm .ly{animation-duration:12s,0s}
+@media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:90px}.mj-holo{right:26px}.mj-form input{font-size:16px}}
+/* コマ表版の案内役：1コマ 200×140 を 0.6 倍（120×84）で表示。--fx/--fy でコマを選び、3層が同じコマを映す */
+.mj-holo.sp .ly{position:absolute;inset:0;background-repeat:no-repeat;background-position:calc(var(--fx,0) * -120px) calc(var(--fy,0) * -84px);filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 8px rgba(55,62,185,.95))}
+.mj-holo.sp .figwrap[data-sheet=idle] .ly{background-image:url(../assets/majes-idle.png?v=20261013s);background-size:600px 336px}
+.mj-holo.sp .figwrap[data-sheet=talk] .ly{background-image:url(../assets/majes-talk.png?v=20261013s);background-size:600px 672px}
+.mj-holo.sp .ly.a{opacity:.35;animation:mjImA 5.2s ease-in-out infinite}
+.mj-holo.sp .ly.b{opacity:.6;animation:mjImB 6.1s ease-in-out infinite}
+.mj-holo.sp .ly.c{opacity:1;animation:mjImC 7s ease-in-out infinite,mjFlick 3.7s steps(1,end) infinite}
+.mj-holo.sp.talk .ly.c{animation-duration:3.5s,1.9s}
+.mj-holo.sp.glitch .figwrap{animation:mjGlitch .18s steps(2,end) 1}
+@keyframes mjGlitch{0%{transform:scaleX(-1) translateX(3px);opacity:.6}50%{transform:scaleX(-1) translateX(-4px);opacity:1}100%{transform:scaleX(-1);opacity:.8}}
+@keyframes mjImA{0%,100%{transform:translateX(-6px) skewX(-2deg)}50%{transform:translateX(-2px) skewX(1deg) translateY(2px)}}
+@keyframes mjImB{0%,100%{transform:translateX(-2px)}50%{transform:translateX(3px) translateY(-2px)}}
+@keyframes mjImC{0%,100%{transform:translateX(3px) skewX(1deg)}50%{transform:translateX(6px) skewX(-1.5deg) translateY(1px)}}
+.mj-holo.sp.rm .ly{animation-duration:12s,0s}
 /* 案内役は左（ページの側）を向く。周りに小さな形（点・輪・線）を無作為に浮かべ、話している間は速くし、口元から波紋を出す */
 .mj-holo .figwrap{position:absolute;inset:0;transform:scaleX(-1)}
-.mj-holo .figwrap img.ly{filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 8px rgba(55,62,185,.95))}
 .mj-holo .bits{position:absolute;inset:-30px -20px -10px -60px;pointer-events:none;--spd:1}
 .mj-holo.talk .bits{--spd:2.4}
 .mj-holo .bits i{position:absolute;display:block;left:var(--x);top:var(--y);width:var(--s);height:var(--s);opacity:0;animation:mjFloat calc(var(--d)/var(--spd)) linear infinite;animation-delay:var(--dl)}
