@@ -4,9 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AIエージェント agentMAJES｜株式会社エネックス</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="assets/logo-orange.png?v=20261015h">
-<link rel="stylesheet" href="css/style.css?v=20261015h"></head><body data-majes-topic="agent">
-<header class="top solid" id="hdr"><a class="brand" href="index.html"><img src="assets/logo-orange.png?v=20261015h" alt="ENEX"><span>株式会社エネックス</span></a>
+<link rel="icon" type="image/png" href="assets/logo-orange.png?v=20261015i">
+<link rel="stylesheet" href="css/style.css?v=20261015i"></head><body data-majes-topic="agent">
+<header class="top solid" id="hdr"><a class="brand" href="index.html"><img src="assets/logo-orange.png?v=20261015i" alt="ENEX"><span>株式会社エネックス</span></a>
 <nav><a href="index.html">HOME</a><a href="business.html">事業案内</a><a href="system.html">システム<span class="pcw">について</span></a><a href="agent.html" aria-current="page">AI<span class="pcw">エージェント</span></a><a href="company.html">会社概要</a></nav></header>
 
 <main class="page"><svg class="bglines" style="opacity:.2" viewBox="0 0 1200 800" preserveAspectRatio="none"><line x1="-150" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="-75" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="0" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="75" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="150" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="225" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="300" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="375" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="450" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="525" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="600" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="675" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="750" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="825" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="900" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="975" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="1050" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="1125" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="1200" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/><line x1="1275" y1="800" x2="900" y2="380" stroke="#ff941a" stroke-width="0.6"/></svg>
@@ -15,41 +15,44 @@
    <h1>知りたいことを<br>ちゃんと聞き取り<br><em>正確に伝える</em></h1>
    <p class="lead">エネックスは、記憶するAIを構築しました。<br>AIはその記憶を使い、人を、企業を、拠点を理解し、いつ・どこで・誰が・何をしたかを把握します。<br>目的を見据え、ルールに従い、与えられた仕事を忠実に実行します。</p>
   </div>
- </div>
- <div class="holowrap rv"><canvas class="vis" id="holocv" aria-label="MAJES の脳をイメージしたダイヤモンドのホログラムに、データが出入りする"></canvas></div>
 
- <div class="wrap">
-  <div class="blk rv" style="margin-top:40px"><div class="lbl">AGENTS</div>
-   <div class="agents">
-    <div class="ag card"><div class="n">01</div><h3>HP agentMAJES<span class="st on">稼働中</span></h3><p>ホームページの案内役として働きます。シンプルなデザインで文字数が少ないページでも、MAJESへ質問すれば知りたいことを教えてくれます。さらに詳しく知りたい時は、LINE agentMAJESへ会話を繋ぎます。</p></div>
-    <div class="ag card"><div class="n">02</div><h3>LINE agentMAJES<span class="st on">稼働中</span></h3><p>LINEを通じて相談役として働きます。ただ見るだけではなく、詳しく知りたい方がLINEを通じて、ホームページに無い情報を知りたい分だけ説明します。規則上答えられない質問は、担当者を呼んで会話を繋ぎます。</p></div>
-    <div class="ag card"><div class="n">03</div><h3>appointmentMAJES<span class="st soon">準備中</span></h3><p>日程調整専門の秘書として働きます。各担当者の日程を把握し、お客様の問い合わせに対して間に入り、LINEを通じて日程候補を表示し合い選択、日時・場所・要件を正確に記録します。</p></div>
+  <div class="agsec rv">
+   <canvas class="vis holobg" id="holocv" aria-label="MAJES の脳をイメージしたダイヤモンドのホログラムに、データが出入りする"></canvas>
+   <div class="agover">
+    <h2>丁寧に説明<br>知らないことは<br>無理に話さない</h2>
+    <p class="lead">AIができることを明確に示します。</p>
+    <div class="agents">
+     <div class="ag card"><div class="n">01</div><h3>HP agentMAJES<span class="st on">稼働中</span></h3><p>ホームページの案内役として働きます。シンプルなデザインで文字数が少ないページでも、MAJESへ質問すれば知りたいことを教えてくれます。さらに詳しく知りたい時は、LINE agentMAJESへ会話を繋ぎます。</p></div>
+     <div class="ag card"><div class="n">02</div><h3>LINE agentMAJES<span class="st on">稼働中</span></h3><p>LINEを通じて相談役として働きます。ただ見るだけではなく、詳しく知りたい方がLINEを通じて、ホームページに無い情報を知りたい分だけ説明します。規則上答えられない質問は、担当者を呼んで会話を繋ぎます。</p></div>
+     <div class="ag card"><div class="n">03</div><h3>appointmentMAJES<span class="st soon">準備中</span></h3><p>日程調整専門の秘書として働きます。各担当者の日程を把握し、お客様の問い合わせに対して間に入り、LINEを通じて日程候補を表示し合い選択、日時・場所・要件を正確に記録します。</p></div>
+    </div>
    </div>
-   <canvas class="vis" id="jsoncv" style="height:380px" aria-label="JSON のデータが降り積もり、流れていく"></canvas>
   </div>
 
-  <div class="blk rv"><div class="lbl">TRY IT</div>
+  <canvas class="vis rv" id="psvcv" style="height:300px" aria-label="PSV 形式のデータが降り積もり、静かに消えていく"></canvas>
+
+  <div class="blk rv" style="margin-top:8px"><div class="lbl">TRY IT</div>
    <h2>実際に動く<br><em>AIエージェントを</em><br>ご体験ください</h2>
    <p class="lead">HP agentMAJESとLINE agentMAJESが、あなたをご案内します。</p>
    <ol class="agsteps">
-    <li><b>どういう要件か、HP agentMAJESへお話しください</b><span>例：LINEのAIについて教えて</span></li>
-    <li><b>何を知りたいか、agentMAJESへお話しください</b><span>例：導入メリットを知りたい</span></li>
-    <li><b>詳しい情報を知るために、要件を伝えてLINE agentMAJESへ繋がせてください</b><span>例：価格についてもっと知りたい</span></li>
-    <li><b>導入費用の目安を、LINE agentMAJESへお聞きください</b><span>例：うちのHPへセットするといくらくらい？</span></li>
+    <li><b>何を知りたいか、HP agentMAJESへお尋ねください</b><span>例：LINEのAIについて教えて</span><em>具体的な説明がどれほどできるか、試してみてください。</em></li>
+    <li><b>どこまで知っているか、HP agentMAJESへ聞いてみてください</b><span>例：ランチの美味しい店は？</span><em>知らないことは、知らないと答えます。</em></li>
+    <li><b>会話の目的を、LINE agentMAJESへ繋がせてみてください</b><span>例：LINE agentMAJESの導入価格を知りたい</span><em>詳しい話を、LINE agentMAJESへ引き継いでくれます。</em></li>
+    <li><b>導入費用の目安を、LINE agentMAJESへお聞きください</b><span>例：うちのホームページへ組み込むのはどれくらいかかる？</span><em>具体的な金額を正確に伝えるか、試してみてください。</em></li>
    </ol>
-   <p class="lead" style="margin-top:26px">導入方法はLINE agentMAJESへご相談ください。<br><small>代理店のご相談は、お電話かメールで受け付けます。</small></p>
+   <p class="lead" style="margin-top:26px">導入方法は、LINE agentMAJESを通じて担当者へ繋ぎ、お見積りを依頼できます。<br><small>代理店のお申し込みは、お電話かメールで受け付けています。</small></p>
   </div>
 
   <div class="contact rv" id="contact">
-   <img src="assets/logo-orange.png?v=20261015h" alt="ENEX">
+   <img src="assets/logo-orange.png?v=20261015i" alt="ENEX">
    <div class="info"><div class="msg">LINE の agentMAJES へ<br>ご質問してみてください</div>
     <p class="ln">※当社から広告宣伝の LINE はお送りしません。MAJES との会話専用の LINE です。</p>
     <b>株式会社エネックス</b><br>TEL 0940-22-8558<br>Mail info@enex.one</div>
-   <div class="lineadd"><img class="qr" src="assets/line-qr.svg?v=20261015h" alt="LINE 友だち追加の QR コード" width="128" height="128"><div class="lid">ID <b>@947auqhk</b><button type="button" class="cp" data-copy="@947auqhk">コピー</button></div><a class="btn p" href="https://line.me/R/ti/p/@947auqhk" target="_blank" rel="noopener">LINE を開く</a></div>
+   <div class="lineadd"><img class="qr" src="assets/line-qr.svg?v=20261015i" alt="LINE 友だち追加の QR コード" width="128" height="128"><div class="lid">ID <b>@947auqhk</b><button type="button" class="cp" data-copy="@947auqhk">コピー</button></div><a class="btn p" href="https://line.me/R/ti/p/@947auqhk" target="_blank" rel="noopener">LINE を開く</a></div>
    <div class="btns"><a class="btn s" href="contact.html">お問い合わせ</a><a class="btn s" href="assets/ENEX_pamphlet.pdf?v=20261013r" target="_blank" rel="noopener">パンフレットを見る</a></div>
   </div>
  </div>
 </main>
-<footer><div class="fb"><span class="fl"><img src="assets/logo-orange.png?v=20261015h" alt="">© 株式会社エネックス</span><span><a href="business.html">事業案内</a><a href="system.html">システムについて</a><a href="agent.html">AIエージェント</a><a href="company.html">会社概要</a><a href="privacy.html">個人情報の取り扱い</a></span></div></footer>
+<footer><div class="fb"><span class="fl"><img src="assets/logo-orange.png?v=20261015i" alt="">© 株式会社エネックス</span><span><a href="business.html">事業案内</a><a href="system.html">システムについて</a><a href="agent.html">AIエージェント</a><a href="company.html">会社概要</a><a href="privacy.html">個人情報の取り扱い</a></span></div></footer>
 
-<script src="js/sub.js?v=20261015h"></script><script src="js/agent.js?v=20261015h"></script><script src="js/majes.js?v=20261015h"></script></body></html>
+<script src="js/sub.js?v=20261015i"></script><script src="js/agent.js?v=20261015i"></script><script src="js/majes.js?v=20261015i"></script></body></html>
