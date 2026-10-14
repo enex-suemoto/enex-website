@@ -475,8 +475,8 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 @media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:90px}.mj-holo{right:26px}.mj-form input{font-size:16px}}
 /* コマ表版の案内役：1コマ 200×140 を 0.6 倍（120×84）で表示。--fx/--fy でコマを選び、3層が同じコマを映す */
 .mj-holo.sp .ly{position:absolute;inset:0;background-repeat:no-repeat;background-position:calc(var(--fx,0) * -120px) calc(var(--fy,0) * -84px);filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 8px rgba(55,62,185,.95))}
-.mj-holo.sp .figwrap[data-sheet=idle] .ly{background-image:url(../assets/majes-idle.png?v=20261014e);background-size:600px 336px}
-.mj-holo.sp .figwrap[data-sheet=talk] .ly{background-image:url(../assets/majes-talk.png?v=20261014e);background-size:600px 672px}
+.mj-holo.sp .figwrap[data-sheet=idle] .ly{background-image:url(../assets/majes-idle.png?v=20261015a);background-size:600px 336px}
+.mj-holo.sp .figwrap[data-sheet=talk] .ly{background-image:url(../assets/majes-talk.png?v=20261015a);background-size:600px 672px}
 .mj-holo.sp .ly.a{opacity:.35;animation:mjImA 5.2s ease-in-out infinite}
 .mj-holo.sp .ly.b{opacity:.6;animation:mjImB 6.1s ease-in-out infinite}
 .mj-holo.sp .ly.c{opacity:1;animation:mjImC 7s ease-in-out infinite,mjFlick 3.7s steps(1,end) infinite}
@@ -608,3 +608,8 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .mj-form textarea:focus{outline:none;border-color:#373eb9}
 .mj-form button{height:40px}
 @media (max-width:600px){.mj-m{font-size:16px}.mj-form textarea{font-size:16px}.mj-note{font-size:12px}.mj-line{font-size:14px}.mj-lbox .lb{font-size:14px}.mj-lbox small{font-size:12px}.mj-linebtn{font-size:15px}}
+/* 個人情報の取り扱い：AI の表 */
+.ptable{width:100%;border-collapse:collapse;margin:14px 0 18px;font-size:13.5px;line-height:1.7}
+.ptable th,.ptable td{border:1px solid rgba(0,0,0,.18);padding:10px 12px;text-align:left;vertical-align:top}
+.ptable th{background:rgba(58,61,126,.06);font-weight:700;white-space:nowrap}
+@media (max-width:600px){.ptable,.ptable tr,.ptable td,.ptable th{display:block;width:100%}.ptable th{display:none}.ptable td{border:0;border-top:1px solid rgba(0,0,0,.12);padding:8px 0}.ptable tr{margin-bottom:14px;border:1px solid rgba(0,0,0,.18);border-radius:10px;padding:8px 12px}.ptable td:first-child{font-weight:700;color:#3a3d7e;border-top:0}}
