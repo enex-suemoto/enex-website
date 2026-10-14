@@ -1,7 +1,7 @@
 // MAJES 呼び出しタブと対面画面（全ページ共通。サーバーを持たないので、会話は訪問中だけ sessionStorage に保持）
 (function(){
  // 接続先（MAJES 側の窓口ができたら endpoint を入れる。空の間は「準備中」の返事を出す）
- const CFG={endpoint:'',line:'',topic:document.body.dataset.majesTopic||'',tel:'0940-22-8558'};
+ const CFG={endpoint:'https://majes-api-427698341897.asia-northeast1.run.app/api/v1/chat/web',line:'',topic:document.body.dataset.majesTopic||'',tel:'0940-22-8558'};
  const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const KEY='majes';
  const GREET='株式会社エネックスの MAJES です。基幹システムの導入や費用の目安、エネックスの電気など、お気軽にお尋ねください。御社の状況に沿った詳しいご相談は、LINE で承ります。';
@@ -16,7 +16,7 @@
 
  // 案内役：いただいた絵をコマ（200×140、5列）に切った線画の表を、3枚ずらして重ねて立体に見せる
  //  idle = 静かに立っている20コマ、talk = 手ぶりの40コマ（5コマで1つの手ぶり、8種類）
- const SHEET={idle:{src:'assets/majes-idle.png?v=20261013s',n:20},talk:{src:'assets/majes-talk.png?v=20261013s',n:40}};
+ const SHEET={idle:{src:'assets/majes-idle.png?v=20261014a',n:20},talk:{src:'assets/majes-talk.png?v=20261014a',n:40}};
  // 周りに浮かべる小さな形（点・輪・線・角）。位置・大きさ・速さは毎回無作為
  let bits='';
  for(let i=0;i<16;i++){
