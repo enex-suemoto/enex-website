@@ -1,11 +1,11 @@
 // MAJES 呼び出しタブと対面画面（全ページ共通。サーバーを持たないので、会話は訪問中だけ sessionStorage に保持）
 (function(){
  // 接続先（MAJES 側の窓口ができたら endpoint を入れる。空の間は「準備中」の返事を出す）
- const CFG={endpoint:'https://majes-api-427698341897.asia-northeast1.run.app/api/v1/chat/web',line:'',topic:document.body.dataset.majesTopic||'',tel:'0940-22-8558'};
+ const CFG={endpoint:'https://majes-api-427698341897.asia-northeast1.run.app/api/v1/chat/web',line:'https://line.me/R/ti/p/@947auqhk',topic:document.body.dataset.majesTopic||'',tel:'0940-22-8558'};
  const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const KEY='majes';
- const GREET='株式会社エネックスの MAJES です。基幹システムの導入や費用の目安、エネックスの電気など、お気軽にお尋ねください。御社の状況に沿った詳しいご相談は、LINE で承ります。';
- const LINE_MSG='もっと詳しくお話しされる場合は、LINE の友だち登録をお願いします。登録いただくと相談者さまを認識・記憶し、次回以降も続きからお話しできます。登録後にお名前・電話番号・ご住所を伺ったうえで、ご相談の段階に合わせて詳しくご案内します。';
+ const GREET='こんにちは。株式会社エネックスの受付、agentMAJES です。会社のことや製品の概要をご案内します。製品の詳しい説明や具体的な使い方は、LINE の担当 agentMAJES が承りますので、必要に応じてご案内します。';
+ const LINE_MSG='ここから先は、詳しい説明ができる LINE の担当 agentMAJES がお聞きします。友だち登録いただくと、現在の状況を伺ったうえでご提案したり、担当者を呼び出してご連絡することもできます。なお、ここでの会話は LINE には引き継がれませんので、LINE で改めてお聞かせください。';
  const PREP='ただいま窓口を準備中です。お急ぎの場合はお電話（'+CFG.tel+'）でお尋ねください。';
 
  // 訪問中の記録（無作為の番号・会話・開閉）
@@ -33,7 +33,7 @@
  tab.innerHTML='<i></i>Call MAJES';
  const p=document.createElement('aside');
  p.className='mj-panel';p.id='mj-panel';p.setAttribute('aria-label','MAJES 相談窓口');
- p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">agentMAJES<small>フロントアドバイザー</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
+ p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">agentMAJES<small>受付・ご案内</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
   +'<div class="mj-log" aria-live="polite"></div>'
   +'<div class="mj-line" hidden><p></p><a class="mj-linebtn" target="_blank" rel="noopener">LINE で友だち登録</a></div>'
   +'<form class="mj-form"><input type="text" autocomplete="off" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"><button type="submit">送る</button></form>'
