@@ -14,7 +14,7 @@
   const spawn=()=>{if(streams.length>7)return;const out=Math.random()<.3;streams.push({s:0,ang:out?-Math.PI/4+(Math.random()-.5)*.3:Math.random()*Math.PI*2,out,txt:PSV(90+Math.floor(Math.random()*60)),v:(.08+Math.random()*.06)*spd});};
   const isOn=visible(hc,draw);
   function draw(now){if(!isOn()){requestAnimationFrame(draw);return;}const dt=Math.min((now-last)/1000,.1);last=now;t+=dt*spd;
-   const W=g.W,H=g.H,cx=W/2+W*.05,cy=H/2,R=Math.min(W*.32,H*.44);x.clearRect(0,0,W,H);
+   const W=g.W,H=g.H,cx=W/2+W*.05,cy=H*.5,R=Math.min(W*.38,H*.5);x.clearRect(0,0,W,H);
    const ay=t*.45,ax=.42,tilt=.5;
    const pr=([px,py,pz])=>{let X=px*Math.cos(ay)-pz*Math.sin(ay),Z=px*Math.sin(ay)+pz*Math.cos(ay);let Y=py*Math.cos(ax)-Z*Math.sin(ax);Z=py*Math.sin(ax)+Z*Math.cos(ax);const X2=X*Math.cos(tilt)-Y*Math.sin(tilt),Y2=X*Math.sin(tilt)+Y*Math.cos(tilt);const f=1/(1+Z*.18);return [cx+X2*R*f,cy+Y2*R*f*.9,Z];};
    const C=ring(8,.55,-.55,0).map(pr),G=ring(8,1,0,Math.PI/8).map(pr),T=pr([0,-1,0]),B=pr([0,1.25,0]);
@@ -35,11 +35,12 @@
  const pc=document.getElementById('psvcv');
  if(pc){
   const g=setup(pc);const x=g.x;let last=0,next=0;const LH=9;
-  const falling=[],pile=[];let fading=false,fade=1,target=15+Math.floor(Math.random()*11);
+  const falling=[],pile=[];let fading=false,fade=1,target=15+Math.floor(Math.random()*11),primed=false;
   const isOn=visible(pc,draw);
   function draw(now){if(!isOn()){requestAnimationFrame(draw);return;}const dt=Math.min((now-last)/1000,.1);last=now;const W=g.W,H=g.H;x.clearRect(0,0,W,H);
    x.font='5px Menlo,Consolas,monospace';x.textBaseline='top';
-   if(!fading){next-=dt*spd;if(next<=0&&falling.length<2){const full=Math.random()<.5;const len=full?Math.floor(W/3.1):Math.floor(W/6.2);const px=full?8:(Math.random()<.5?8:W/2);falling.push({txt:PSV(len),x:px,y:-10,v:(26+Math.random()*10)*spd});next=.9+Math.random()*.6;}}
+   if(!primed){primed=true;for(let k=0;k<4;k++){const full=k%2===0;pile.push({txt:PSV(full?Math.floor(W/3.1):Math.floor(W/6.2)),x:full?8:(k%4===1?8:W/2)});}}
+   if(!fading){next-=dt*spd;if(next<=0&&falling.length<3){const full=Math.random()<.5;const len=full?Math.floor(W/3.1):Math.floor(W/6.2);const px=full?8:(Math.random()<.5?8:W/2);falling.push({txt:PSV(len),x:px,y:-10,v:(34+Math.random()*12)*spd});next=.7+Math.random()*.5;}}
    const stackTop=H-10-pile.length*LH;
    for(let i=falling.length-1;i>=0;i--){const f=falling[i];f.y+=f.v*dt;if(f.y>=stackTop-LH){pile.push({txt:f.txt,x:f.x});falling.splice(i,1);continue;}x.fillStyle='rgba(0,0,0,.4)';x.fillText(f.txt,f.x,f.y);}
    if(pile.length>=target&&!fading){fading=true;}
