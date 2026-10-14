@@ -681,4 +681,4 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .bmbtns{display:flex;gap:12px;flex-wrap:wrap}
 .bmbtns .btn.p{background:#3a3d7e}
 .bmbtns .btn.s{border:1px solid #3a3d7e;color:#3a3d7e;background:transparent;cursor:pointer;font-family:inherit}
-.bmbtns .btn{min-width:190px;text-align:center}
+.bmbtns .btn{width:246px;box-sizing:border-box;text-align:center}
