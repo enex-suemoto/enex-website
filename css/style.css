@@ -601,3 +601,4 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .contact .lineadd .cp{border:1px solid rgba(255,255,255,.7);background:transparent;color:#fff;font:700 11px/1 'Noto Sans JP','Hiragino Sans',sans-serif;padding:6px 10px;border-radius:999px;cursor:pointer}
 .contact .lineadd .btn{padding:10px 22px;font-size:13.5px}
 @media (max-width:900px){.contact{flex-direction:column;align-items:flex-start}.contact .lineadd{align-items:flex-start}}
+@media (max-width:600px){.contact .msg{font-size:19px;line-height:1.55}}
