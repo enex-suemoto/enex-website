@@ -15,7 +15,7 @@
 
  // 案内役：いただいた絵をコマ（200×140、5列）に切った線画の表を、3枚ずらして重ねて立体に見せる
  //  idle = 静かに立っている20コマ、talk = 手ぶりの40コマ（5コマで1つの手ぶり、8種類）
- const SHEET={idle:{src:'assets/majes-idle.png?v=20261014c',n:20},talk:{src:'assets/majes-talk.png?v=20261014c',n:40}};
+ const SHEET={idle:{src:'assets/majes-idle.png?v=20261014d',n:20},talk:{src:'assets/majes-talk.png?v=20261014d',n:40}};
  // 周りに浮かべる小さな形（点・輪・線・角）。位置・大きさ・速さは毎回無作為
  let bits='';
  for(let i=0;i<16;i++){
@@ -35,14 +35,14 @@
  p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">agentMAJES<small>受付・ご案内</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
   +'<div class="mj-log" aria-live="polite"></div>'
   +'<div class="mj-line" hidden><button type="button" class="mj-linebtn">LINE 登録はこちら</button>'
-  +'<div class="mj-lbox" hidden><img class="qr" src="assets/line-qr.svg?v=20261014c" alt="LINE 友だち追加の QR コード" width="120" height="120">'
+  +'<div class="mj-lbox" hidden><img class="qr" src="assets/line-qr.svg?v=20261014d" alt="LINE 友だち追加の QR コード" width="120" height="120">'
   +'<div class="lb"><div class="lid">ID <b>@947auqhk</b><button type="button" class="cp">コピー</button></div>'
   +'<a class="lopen" href="https://line.me/R/ti/p/@947auqhk" target="_blank" rel="noopener">LINE を開いて友だち追加</a>'
   +'<small>QR を読み取るか、ID を LINE の検索に貼り付けてください。ここでの会話は LINE には引き継がれません。</small></div></div></div>'
-  +'<form class="mj-form"><input type="text" autocomplete="off" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"><button type="submit">送る</button></form>'
-  +'<p class="mj-note">この会話はブラウザを閉じるまで保持されます。お名前や連絡先は入力せず、詳しいご相談は LINE でお願いします。</p>';
+  +'<form class="mj-form"><textarea rows="1" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"></textarea><button type="submit">送る</button></form>'
+  +'<p class="mj-note"><span class="pcw">shift＋↩︎ でチャット内の改行ができます。</span>会話の内容はページを閉じるまで維持されます。</p>';
  document.body.append(tab,p);
- const log=p.querySelector('.mj-log'),form=p.querySelector('.mj-form'),inp=form.querySelector('input'),holo=p.querySelector('.mj-holo'),lineBox=p.querySelector('.mj-line');
+ const log=p.querySelector('.mj-log'),form=p.querySelector('.mj-form'),inp=form.querySelector('textarea'),holo=p.querySelector('.mj-holo'),lineBox=p.querySelector('.mj-line');
  // 「LINE 登録はこちら」→ QR と ID の枠を開く。「コピー」→ ID を写す
  const lbox=lineBox.querySelector('.mj-lbox');
  lineBox.querySelector('.mj-linebtn').addEventListener('click',()=>{lbox.hidden=!lbox.hidden;log.scrollTop=log.scrollHeight;});
@@ -94,6 +94,11 @@
   requestAnimationFrame(()=>requestAnimationFrame(()=>p.classList.remove('noanim')));
  }
  function close(){document.body.classList.remove('mj-open');p.classList.remove('open');tab.setAttribute('aria-expanded','false');S.open=false;save();}
+ // Enter で送る／Shift+Enter で改行。タッチ端末では Enter は改行にして、「送る」で送信
+ const touch=matchMedia('(pointer:coarse)').matches;
+ inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!touch&&!e.isComposing){e.preventDefault();form.requestSubmit();}});
+ const grow=()=>{inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,120)+'px';};
+ inp.addEventListener('input',grow);
  tab.addEventListener('click',()=>open());
  document.querySelectorAll('[data-majes-open]').forEach(b=>b.addEventListener('click',()=>{open();inp.focus();}));
  p.querySelector('.mj-close').addEventListener('click',close);
@@ -104,7 +109,7 @@
  let busy=false;
  form.addEventListener('submit',async e=>{
   e.preventDefault();const t=inp.value.trim();if(!t||busy)return;
-  inp.value='';bubble('u',t,true);busy=true;
+  inp.value='';grow();bubble('u',t,true);busy=true;
   const w=bubble('a wait','');w.innerHTML='<i></i><i></i><i></i>';
   let reply=PREP,line=false;
   if(CFG.endpoint){
