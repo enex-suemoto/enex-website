@@ -475,8 +475,8 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 @media (max-width:600px){.mj-panel{width:100%}.mj-tab{padding:14px 8px 14px 10px;font-size:12px}.mj-head{height:90px}.mj-holo{right:26px}.mj-form input{font-size:16px}}
 /* コマ表版の案内役：1コマ 200×140 を 0.6 倍（120×84）で表示。--fx/--fy でコマを選び、3層が同じコマを映す */
 .mj-holo.sp .ly{position:absolute;inset:0;background-repeat:no-repeat;background-position:calc(var(--fx,0) * -120px) calc(var(--fy,0) * -84px);filter:drop-shadow(0 0 2px rgba(255,255,255,.6)) drop-shadow(0 0 8px rgba(55,62,185,.95))}
-.mj-holo.sp .figwrap[data-sheet=idle] .ly{background-image:url(../assets/majes-idle.png?v=20261015d);background-size:600px 336px}
-.mj-holo.sp .figwrap[data-sheet=talk] .ly{background-image:url(../assets/majes-talk.png?v=20261015d);background-size:600px 672px}
+.mj-holo.sp .figwrap[data-sheet=idle] .ly{background-image:url(../assets/majes-idle.png?v=20261015e);background-size:600px 336px}
+.mj-holo.sp .figwrap[data-sheet=talk] .ly{background-image:url(../assets/majes-talk.png?v=20261015e);background-size:600px 672px}
 .mj-holo.sp .ly.a{opacity:.35;animation:mjImA 5.2s ease-in-out infinite}
 .mj-holo.sp .ly.b{opacity:.6;animation:mjImB 6.1s ease-in-out infinite}
 .mj-holo.sp .ly.c{opacity:1;animation:mjImC 7s ease-in-out infinite,mjFlick 3.7s steps(1,end) infinite}
@@ -631,3 +631,16 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 @media (max-width:900px){.mjs{grid-template-columns:1fr}}
 #majes h1 em{font-style:normal;color:#fb7132}
 @media (max-width:600px){header.top nav a{margin-left:10px;font-size:11px}}
+/* AIエージェント：体験の案内 */
+.trybox{margin-top:34px;padding:34px 36px;border-radius:20px;background:#3a3d7e;color:#fff}
+.trybox h2{margin:0 0 10px;color:#fff;font-size:clamp(22px,2.4vw,32px);line-height:1.45;filter:none}
+.trybox h2 em{font-style:normal;color:#ff941a}
+.trybox>p{margin:0 0 18px;font-size:15px;color:rgba(255,255,255,.85)}
+.steps4{counter-reset:s;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.steps4 li{counter-increment:s;position:relative;padding:16px 18px 14px 58px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+.steps4 li::before{content:counter(s);position:absolute;left:16px;top:14px;width:30px;height:30px;border-radius:50%;background:#ff941a;color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:15px}
+.steps4 b{display:block;font-size:14.5px;line-height:1.6}
+.steps4 span{display:block;margin-top:6px;font-size:12.5px;color:rgba(255,255,255,.75)}
+.trybox .note{margin:16px 0 14px;font-size:13.5px;color:rgba(255,255,255,.85)}
+.trybox .btn.p{border:0;cursor:pointer;font-family:inherit}
+@media (max-width:700px){.trybox{padding:24px 20px}.steps4{grid-template-columns:1fr}}
