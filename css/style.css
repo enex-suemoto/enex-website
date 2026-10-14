@@ -514,3 +514,45 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .golink{margin-top:36px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:18px 22px;border:1px solid rgba(255,148,26,.32);border-radius:14px;background:rgba(255,148,26,.05)}
 .golink b{font-size:16px;font-weight:900}.golink span{flex:1;font-size:13.5px;color:rgba(0,0,0,.66);min-width:200px}
 .golink .btn{margin:0;border:1px solid #fb7132;color:#fb7132;padding:10px 20px;font-size:13.5px}
+/* トップ 02〜04：丸の流れ・壁の札・真逆の帯・3つの理由 */
+.erpflow,.aicirc{width:100%;height:auto;display:block;max-width:960px;margin:34px auto 8px;overflow:visible}
+.erpflow .ln,.aicirc .ln{fill:none;stroke:rgba(0,0,0,.25);stroke-width:1.4;stroke-dasharray:100;stroke-dashoffset:100}
+.in .erpflow .ln,.in .aicirc .ln{animation:erpln 2.4s ease-out forwards .2s}
+@keyframes erpln{to{stroke-dashoffset:0}}
+.erpflow .nd circle{fill:#ffffff;stroke:#3a3d7e;stroke-width:1.6}
+.erpflow .nd text,.aicirc .nd text{font-size:15px;font-weight:700;text-anchor:middle;fill:#000000}
+.erpflow .nd{opacity:0;transform:translateY(8px)}
+.in .erpflow .nd{animation:ndin .6s ease-out forwards}
+.in .erpflow .n2{animation-delay:.4s}.in .erpflow .n3{animation-delay:.8s}.in .erpflow .n4{animation-delay:1.2s}.in .erpflow .n5{animation-delay:1.6s}.in .erpflow .n6{animation-delay:2s}
+.erpflow .n6 circle{fill:#3a3d7e}.erpflow .n6 text{fill:#ffffff}
+@keyframes ndin{to{opacity:1;transform:none}}
+.walls{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+.wl{border:1px solid rgba(0,0,0,.35);border-radius:12px;padding:20px 14px;text-align:center;background:rgba(0,0,0,.03)}
+.wl b{font-size:15px;line-height:1.6;color:rgba(0,0,0,.78)}
+.flip{position:relative;margin-top:26px;background:#3a3d7e;color:#fff;border-radius:16px;padding:30px 34px;overflow:hidden}
+.flip .ft{position:relative;z-index:1;max-width:620px}
+.flip .ft b{display:block;font-size:22px;font-weight:900;letter-spacing:.04em;line-height:1.5}
+.flip .ft p{margin:10px 0 0;font-size:15px;line-height:1.9;color:rgba(255,255,255,.88)}
+.flip .why{position:absolute;right:28px;top:50%;transform:translateY(-50%);font-size:clamp(56px,9vw,120px);font-weight:900;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.45);letter-spacing:.02em;white-space:nowrap;pointer-events:none}
+.reasons{align-items:center}
+.reasons .rs{display:grid;gap:14px}
+.r.card{padding:22px 24px;display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:baseline}
+.r.card .n{font-size:26px;font-weight:900;color:#fb7132;line-height:1}
+.r.card h3{margin:0;font-size:18px}.r.card p{grid-column:2;margin:6px 0 0;font-size:14px;line-height:1.8;color:rgba(0,0,0,.66)}
+.aicirc .nd circle{fill:#ffffff;stroke-width:1.8}
+.aicirc .c1 circle{stroke:#000000}.aicirc .c2 circle{stroke:#3a3d7e}.aicirc .c3 circle{stroke:#373eb9}.aicirc .c4 circle{stroke:#fb7132}
+.in .aicirc .nd circle{animation:aic 12s linear infinite}
+.in .aicirc .c2 circle{animation-delay:3s}.in .aicirc .c3 circle{animation-delay:6s}.in .aicirc .c4 circle{animation-delay:9s}
+.in .aicirc .nd text{animation:aict 12s linear infinite}
+.in .aicirc .c2 text{animation-delay:3s}.in .aicirc .c3 text{animation-delay:6s}.in .aicirc .c4 text{animation-delay:9s}
+.aicirc .c1 circle{--c:#000000}.aicirc .c2 circle{--c:#3a3d7e}.aicirc .c3 circle{--c:#373eb9}.aicirc .c4 circle{--c:#fb7132}
+@keyframes aic{0%,24%{fill:#ffffff}25%,99%{fill:var(--c)}100%{fill:#ffffff}}
+@keyframes aict{0%,24%{fill:#000000}25%,99%{fill:#ffffff}100%{fill:#000000}}
+.golink button.btn{cursor:pointer;background:transparent;font-family:inherit}
+@media (max-width:900px){.walls{grid-template-columns:1fr 1fr}.flip .why{font-size:48px;right:14px;opacity:.8}}
+@media (max-width:600px){.erpflow .nd text,.aicirc .nd text{font-size:22px}.erpflow,.aicirc{margin-top:22px}.flip{padding:24px 20px 60px}.flip .why{top:auto;bottom:6px;transform:none;font-size:44px}}
+/* 丸の流れ：スマホは縦並びの版に切り替える */
+.erpflow.m,.aicirc.m{display:none}
+.erpflow.m .nd text,.aicirc.m .nd text{text-anchor:start;font-size:17px}
+@media (max-width:600px){.erpflow.d,.aicirc.d{display:none}.erpflow.m,.aicirc.m{display:block;max-width:320px;margin-left:0}.erpflow .nd text,.aicirc .nd text{font-size:17px}.aicirc.m .nd text{fill:#000000}}
+.erpflow.m .n6 text{fill:#000000}.aicirc.m .nd text{animation:none!important;fill:#000000}
