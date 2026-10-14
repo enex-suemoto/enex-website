@@ -613,3 +613,4 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .ptable th,.ptable td{border:1px solid rgba(0,0,0,.18);padding:10px 12px;text-align:left;vertical-align:top}
 .ptable th{background:rgba(58,61,126,.06);font-weight:700;white-space:nowrap}
 @media (max-width:600px){.ptable,.ptable tr,.ptable td,.ptable th{display:block;width:100%}.ptable th{display:none}.ptable td{border:0;border-top:1px solid rgba(0,0,0,.12);padding:8px 0}.ptable tr{margin-bottom:14px;border:1px solid rgba(0,0,0,.18);border-radius:10px;padding:8px 12px}.ptable td:first-child{font-weight:700;color:#3a3d7e;border-top:0}}
+@media (max-width:600px){.ptable thead,.ptable tr:first-child{display:none}}
