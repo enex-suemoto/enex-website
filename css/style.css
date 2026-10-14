@@ -567,3 +567,7 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .flip{background:rgba(58,61,126,.2);color:#3a3d7e;border-radius:10px;padding:14px 22px;margin-top:22px;max-width:760px}
 .flip p{margin:0;font-size:15px;line-height:1.8}.flip p b{font-weight:900;color:#3a3d7e}
 @media (max-width:600px){.flip{padding:14px 18px}}
+/* 02 の帯：上の札と同じ幅いっぱい、文字は1.5倍で中央 */
+.flip{max-width:none;text-align:center;padding:18px 22px}
+.flip p{font-size:22.5px;line-height:1.7}
+@media (max-width:600px){.flip p{font-size:17px}}
