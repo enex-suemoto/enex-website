@@ -5,7 +5,6 @@
  const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const KEY='majes';
  const GREET='こんにちは。株式会社エネックスの受付、agentMAJES です。会社のことや製品の概要をご案内します。製品の詳しい説明や具体的な使い方は、LINE の担当 agentMAJES が承りますので、必要に応じてご案内します。';
- const LINE_MSG='ここから先は、詳しい説明ができる LINE の担当 agentMAJES がお聞きします。友だち登録いただくと、現在の状況を伺ったうえでご提案したり、担当者を呼び出してご連絡することもできます。なお、ここでの会話は LINE には引き継がれませんので、LINE で改めてお聞かせください。';
  const PREP='ただいま窓口を準備中です。お急ぎの場合はお電話（'+CFG.tel+'）でお尋ねください。';
 
  // 訪問中の記録（無作為の番号・会話・開閉）
@@ -16,7 +15,7 @@
 
  // 案内役：いただいた絵をコマ（200×140、5列）に切った線画の表を、3枚ずらして重ねて立体に見せる
  //  idle = 静かに立っている20コマ、talk = 手ぶりの40コマ（5コマで1つの手ぶり、8種類）
- const SHEET={idle:{src:'assets/majes-idle.png?v=20261014a',n:20},talk:{src:'assets/majes-talk.png?v=20261014a',n:40}};
+ const SHEET={idle:{src:'assets/majes-idle.png?v=20261014b',n:20},talk:{src:'assets/majes-talk.png?v=20261014b',n:40}};
  // 周りに浮かべる小さな形（点・輪・線・角）。位置・大きさ・速さは毎回無作為
  let bits='';
  for(let i=0;i<16;i++){
@@ -35,14 +34,19 @@
  p.className='mj-panel';p.id='mj-panel';p.setAttribute('aria-label','MAJES 相談窓口');
  p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">agentMAJES<small>受付・ご案内</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
   +'<div class="mj-log" aria-live="polite"></div>'
-  +'<div class="mj-line" hidden><p></p><a class="mj-linebtn" target="_blank" rel="noopener">LINE で友だち登録</a></div>'
+  +'<div class="mj-line" hidden><button type="button" class="mj-linebtn">LINE 登録はこちら</button>'
+  +'<div class="mj-lbox" hidden><img class="qr" src="assets/line-qr.svg?v=20261014b" alt="LINE 友だち追加の QR コード" width="120" height="120">'
+  +'<div class="lb"><div class="lid">ID <b>@947auqhk</b><button type="button" class="cp">コピー</button></div>'
+  +'<a class="lopen" href="https://line.me/R/ti/p/@947auqhk" target="_blank" rel="noopener">LINE を開いて友だち追加</a>'
+  +'<small>QR を読み取るか、ID を LINE の検索に貼り付けてください。ここでの会話は LINE には引き継がれません。</small></div></div></div>'
   +'<form class="mj-form"><input type="text" autocomplete="off" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"><button type="submit">送る</button></form>'
   +'<p class="mj-note">この会話はブラウザを閉じるまで保持されます。お名前や連絡先は入力せず、詳しいご相談は LINE でお願いします。</p>';
  document.body.append(tab,p);
  const log=p.querySelector('.mj-log'),form=p.querySelector('.mj-form'),inp=form.querySelector('input'),holo=p.querySelector('.mj-holo'),lineBox=p.querySelector('.mj-line');
- lineBox.querySelector('p').textContent=LINE_MSG;
- const lineBtn=lineBox.querySelector('.mj-linebtn');
- if(CFG.line)lineBtn.href=CFG.line;else{lineBtn.removeAttribute('href');lineBtn.classList.add('soon');lineBtn.textContent='LINE 友だち登録（準備中）';}
+ // 「LINE 登録はこちら」→ QR と ID の枠を開く。「コピー」→ ID を写す
+ const lbox=lineBox.querySelector('.mj-lbox');
+ lineBox.querySelector('.mj-linebtn').addEventListener('click',()=>{lbox.hidden=!lbox.hidden;log.scrollTop=log.scrollHeight;});
+ lineBox.querySelector('.cp').addEventListener('click',e=>{const b=e.currentTarget;(navigator.clipboard?navigator.clipboard.writeText('@947auqhk'):Promise.reject()).then(()=>{b.textContent='コピーしました';setTimeout(()=>b.textContent='コピー',1600);},()=>{b.textContent='長押しで選択';});});
 
  // 吹き出し
  function bubble(role,text,store){
