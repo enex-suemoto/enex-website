@@ -555,7 +555,6 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .erpflow.m,.aicirc.m{display:none}
 .erpflow.m .nd text,.aicirc.m .nd text{text-anchor:start;font-size:17px}
 @media (max-width:600px){.erpflow.d,.aicirc.d{display:none}.erpflow.m,.aicirc.m{display:block;max-width:320px;margin-left:0}.erpflow .nd text,.aicirc .nd text{font-size:17px}.aicirc.m .nd text{fill:#000000}}
-.erpflow.m .n6 text{fill:#000000}.aicirc.m .nd text{animation:none!important;fill:#000000}
 /* 02〜04 の手直し：矢印の流れ・大きな丸・小さな帯 */
 .erpflow .ln,.aicirc .ln{stroke:rgba(0,0,0,.5);stroke-width:1.6;stroke-dasharray:none;stroke-dashoffset:0;opacity:0}
 .in .erpflow .ln,.in .aicirc .ln{animation:ndin .5s ease-out forwards}
@@ -571,3 +570,15 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .flip{max-width:none;text-align:center;padding:18px 22px}
 .flip p{font-size:22.5px;line-height:1.7}
 @media (max-width:600px){.flip p{font-size:17px}}
+/* スマホの流れ：横長の丸の中に文字、中央寄せ */
+.erpflow .nd ellipse{fill:#ffffff;stroke:#3a3d7e;stroke-width:1.6}.erpflow .n6 ellipse{fill:#3a3d7e}
+.aicirc .nd ellipse{fill:#ffffff;stroke-width:1.8}
+.aicirc .c1 ellipse{stroke:#000000;--c:#000000}.aicirc .c2 ellipse{stroke:#3a3d7e;--c:#3a3d7e}.aicirc .c3 ellipse{stroke:#373eb9;--c:#373eb9}.aicirc .c4 ellipse{stroke:#fb7132;--c:#fb7132}
+.in .aicirc .nd ellipse{animation:aic 12s linear infinite}
+.in .aicirc .c2 ellipse{animation-delay:3s}.in .aicirc .c3 ellipse{animation-delay:6s}.in .aicirc .c4 ellipse{animation-delay:9s}
+.erpflow.m .nd text,.aicirc.m .nd text{text-anchor:middle;font-size:18px}
+.erpflow.m .n6 text{fill:#ffffff}
+.aicirc.m .nd text{fill:#000000}
+.in .aicirc.m .nd text{animation:aict 12s linear infinite}
+.in .aicirc.m .c2 text{animation-delay:3s}.in .aicirc.m .c3 text{animation-delay:6s}.in .aicirc.m .c4 text{animation-delay:9s}
+@media (max-width:600px){.erpflow.m,.aicirc.m{max-width:300px;margin-left:auto;margin-right:auto}}
