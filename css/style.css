@@ -682,3 +682,110 @@ body.mj-open .mj-tab{transform:translate(110%,-50%);opacity:0;pointer-events:non
 .bmbtns .btn.p{background:#3a3d7e}
 .bmbtns .btn.s{border:1px solid #3a3d7e;color:#3a3d7e;background:transparent;cursor:pointer;font-family:inherit}
 .bmbtns .btn{width:246px;box-sizing:border-box;text-align:center}
+
+/* ===== 2026-10-16 物語の協議会（第2版）で追加 ===== */
+/* TOP 案2：三事業の行き先 */
+.biz3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:64px}
+.biz3 a{display:flex;flex-direction:column;gap:8px;padding:22px 22px 20px;text-decoration:none;color:inherit}
+.biz3 .n{font-size:12px;font-weight:700;letter-spacing:.14em;color:#fb7132}
+.biz3 h3{margin:0;font-size:19px;font-weight:900;color:#3a3d7e}
+.biz3 p{margin:0;font-size:14px;line-height:1.8;color:rgba(0,0,0,.72);flex:1}
+.biz3 .go{font-size:13px;font-weight:700;color:#fb7132}
+.biz3h{margin:64px 0 0;font-size:20px;font-weight:900;color:#3a3d7e}
+.biz3h+.biz3{margin-top:18px}
+@media (max-width:760px){.biz3{grid-template-columns:1fr}}
+/* AG 案2：一場面 */
+.scene{margin-top:40px;padding:26px 28px;border-left:4px solid #fb7132;background:rgba(255,148,26,.06);border-radius:0 14px 14px 0}
+.scene h3{margin:0 0 12px;font-size:18px;font-weight:900;color:#3a3d7e}
+.scene ol{margin:0;padding-left:1.4em;font-size:15px;line-height:2}
+.scene ol li b{color:#fb7132}
+/* AG 案3：試した直後に費用 */
+.trynext{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:18px 22px;border-radius:14px;background:#3a3d7e;color:#fff}
+.trynext b{font-size:16px;font-weight:900;flex:1;min-width:220px}
+.trynext .btn{margin:0}
+/* SY 案2：一例 */
+.xmpl{margin-top:26px;padding:20px 22px;border:1px solid rgba(255,148,26,.32);border-radius:14px;background:#fff}
+.xmpl .hd{font-size:13px;font-weight:700;letter-spacing:.1em;color:#fb7132;margin-bottom:10px}
+.xmpl .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:14.5px}
+.xmpl .row span{background:rgba(58,61,126,.08);color:#3a3d7e;font-weight:700;padding:8px 12px;border-radius:8px}
+.xmpl .row i{font-style:normal;color:#fb7132;font-weight:900}
+.xmpl p{margin:12px 0 0;font-size:13.5px;line-height:1.8;color:rgba(0,0,0,.66)}
+/* SY 案3：AIなしで始められる */
+.noai{margin:18px 0 0;padding:14px 20px;background:rgba(58,61,126,.12);color:#3a3d7e;border-radius:10px;font-size:16px;font-weight:900;line-height:1.7}
+.noai small{display:block;font-size:13.5px;font-weight:400;color:rgba(0,0,0,.7)}
+.trynext button.btn{background:transparent;cursor:pointer;font-family:inherit}
+
+/* ===== 第2版 ===== */
+.agsteps lifooter/* つかみ */
+.hook{font-size:clamp(20px,2.4vw,30px);font-weight:900;line-height:1.55;letter-spacing:.03em;color:#3a3d7e;margin-bottom:22px;max-width:760px}
+.hero .hook{font-size:clamp(19px,2.2vw,28px);margin-bottom:18px;text-shadow:0 1px 0 #fff}
+.page .hook{margin-bottom:28px;padding-left:16px;border-left:4px solid #fb7132}
+br.sp{display:none}@media (max-width:600px){br.sp{display:inline}}
+/* トップ：谷の章 */
+.valley{margin-top:48px;padding:28px 30px;border-radius:16px;background:rgba(58,61,126,.06)}
+.valley h3{margin:0 0 14px;font-size:clamp(20px,2.2vw,28px);font-weight:900;line-height:1.5;color:#000}
+.valley h3 em{font-style:normal;color:#3a3d7e}
+.valley p{margin:0;font-size:15.5px;line-height:2;color:rgba(0,0,0,.78);max-width:860px}
+.valley .vq{margin-top:14px;font-weight:700;color:#3a3d7e}
+@media (max-width:600px){.valley{padding:22px 18px}}
+.flip p.flip2{margin-top:6px;font-size:clamp(16px,1.6vw,19px);font-weight:900;color:#fb7132}
+/* システム：一例を大きく */
+.xmpl.big{margin-top:24px;padding:26px 26px}
+.xmpl.big .row{font-size:16px}.xmpl.big .row span{padding:10px 14px}
+.xmpl.big p{font-size:15px}.xmpl.big p b{display:inline-block;font-size:clamp(17px,1.8vw,21px);color:#3a3d7e;margin-bottom:4px}
+/* AI：第二の山 */
+.peak{margin-top:72px;padding:36px 34px;border-radius:18px;background:#3a3d7e;color:#fff}
+.peak .lbl{color:#ff941a}.peak h2{color:#fff;text-shadow:none}.peak h2 em{color:#ff941a}
+.peak .lead{color:rgba(255,255,255,.88)}
+.peak2{margin:18px 0 0;font-size:16px;color:rgba(255,255,255,.85)}.peak2 b{display:block;margin-top:4px;font-size:clamp(20px,2.2vw,26px);color:#fff}
+@media (max-width:600px){.peak{padding:26px 20px}}
+/* AI：夜から翌朝まで */
+.scene h3{font-size:clamp(19px,2vw,24px);line-height:1.5}
+.tl{list-style:none;padding:0!important;margin:0}
+.tl li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(58,61,126,.2);line-height:1.8}
+.tl li:last-child{border-bottom:0}
+.tl time{font-weight:900;color:#3a3d7e;font-size:15px}
+.tl li.am{background:rgba(255,148,26,.12);border-radius:10px;padding:12px 10px;margin-top:6px}
+.tl li.am time{color:#fb7132}
+.scene .note{margin:14px 0 0;font-size:13.5px;color:rgba(0,0,0,.6)}
+/* 共通：LINE の帯を細く */
+.contact.slim{padding:28px 40px;gap:32px;justify-content:space-between}
+.contact.slim .info{flex:1}
+.contact.slim .msg{font-size:clamp(18px,2vw,24px)}
+@media (max-width:900px){.contact.slim{padding:24px 22px}}
+/* 共通：フッターのボタン */
+footer .fbtn{max-width:1032px;margin:0 auto 18px;display:flex;gap:12px;flex-wrap:wrap}
+footer .fbtn .btn{margin:0;padding:10px 22px;font-size:13.5px;color:#fff;border:1px solid rgba(255,255,255,.7)}
+footer .fbtn a{margin-left:0}
+/* トップ：進め方の矢印（スマホ） */
+@media (max-width:600px){
+ .proc{width:78%;margin-left:auto;margin-right:auto}
+ .proc div:nth-child(1){background:rgba(255,148,26,.6)}.proc div:nth-child(2){background:rgba(251,113,50,.6)}
+ .proc div:nth-child(3){background:rgba(55,62,185,.6)}.proc div:nth-child(4){background:rgba(58,61,126,.6)}.proc div:nth-child(5){background:rgba(0,0,0,.6)}
+}
+/* ===== 第2版・末元様の意見を反映 ===== */
+/* LINE の帯：濃紺の枠線、横長、フッターと離す */
+.contact.slim{background:#fff;color:#3a3d7e;border:2px solid #3a3d7e;margin-bottom:72px;padding:26px 40px}
+.contact.slim .msg{color:#3a3d7e}
+.contact.slim .info{color:#3a3d7e}
+.contact.slim .info .ln{color:rgba(0,0,0,.6)}
+.contact.slim .lineadd{flex-direction:row;align-items:center;gap:18px}
+.contact.slim .lineadd .qr{width:104px;height:104px;border:1px solid rgba(58,61,126,.25)}
+.contact.slim .lineadd .lid{color:#3a3d7e}
+.contact.slim .lineadd .cp{border-color:#3a3d7e;color:#3a3d7e}
+.contact.slim .lb2{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+@media (max-width:900px){.contact.slim .lineadd{flex-direction:column;align-items:flex-start}}
+/* AI：第二の山を濃紺の枠に */
+.peak{background:#fff;color:#3a3d7e;border:2px solid #3a3d7e}
+.peak .lbl{color:#fb7132}.peak h2{color:#3a3d7e}.peak h2 em{color:#fb7132}
+.peak .lead{color:#3a3d7e}.peak .lead b{color:#fb7132}
+.peak2{color:#3a3d7e}.peak2 b{color:#3a3d7e}
+/* TRY IT ④：端的に */
+.agsteps .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.agsteps .chips i{font-style:normal;font-size:12.5px;font-weight:700;color:#3a3d7e;background:rgba(58,61,126,.08);border-radius:999px;padding:5px 12px}
+.agsteps .chips i:nth-child(2){background:rgba(255,148,26,.16);color:#c4541c}
+.nw{white-space:nowrap}
+
+/* つかみ：横一列・80% */
+.page .hook.one{font-size:clamp(16px,1.92vw,24px)}
+@media (min-width:901px){.page .hook.one{white-space:nowrap;max-width:none}}
