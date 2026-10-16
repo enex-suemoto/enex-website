@@ -4,7 +4,14 @@
  const CFG={endpoint:'https://majes-api-427698341897.asia-northeast1.run.app/api/v1/chat/web',line:'https://line.me/R/ti/p/@947auqhk',topic:document.body.dataset.majesTopic||'',tel:'0940-22-8558'};
  const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const KEY='majes';
- const GREET='こんにちは。株式会社エネックスの受付、agentMAJES です。会社のことや製品の概要をご案内します。製品の詳しい説明や具体的な使い方は、LINE の担当 agentMAJES が承りますので、必要に応じてご案内します。';
+ const GREET='こんにちは。エネックスホームページの案内担当の MAJES です。製品と業務内容についてご質問があればお聞かせください。私の知識の範囲でお答えさせていただきます。';
+ // よくある質問（ページごと）。押すとその質問を送る
+ const FAQ={
+  top:['中小企業に最適なシステム導入方法とは、何がどう最適なのですか？','10 名ほどの会社でも、大手との格差は埋まりますか？','今のエクセルが整っていなくても使えますか？','調査にお金や期間はかかりますか？','「真逆」とは、どういうことですか？','見積もりを頼んだら、すぐに営業の電話がかかってきますか？'],
+  system:['請求書はインボイス制度に対応していますか？','電子帳簿保存法に対応していますか？','弥生会計や freee、マネーフォワードにもデータを出せますか？','スマホやタブレットから入力できますか？','在庫はリアルタイムで分かりますか？','手書きの伝票があっても大丈夫ですか？'],
+  agent:['AI に任せて大丈夫ですか？','夜や休日の問い合わせには、誰が対応しますか？','ここで話した内容を、LINE で話し直す必要はありますか？','社員の仕事はなくなりますか？','見積もりを頼んだら、すぐに営業の電話がかかってきますか？']
+ };
+ const faqList=FAQ[CFG.topic]||FAQ.top;
  const PREP='ただいま窓口を準備中です。お急ぎの場合はお電話（'+CFG.tel+'）でお尋ねください。';
 
  // 訪問中の記録（無作為の番号・会話・開閉）
@@ -15,7 +22,7 @@
 
  // 案内役：いただいた絵をコマ（200×140、5列）に切った線画の表を、3枚ずらして重ねて立体に見せる
  //  idle = 静かに立っている20コマ、talk = 手ぶりの40コマ（5コマで1つの手ぶり、8種類）
- const SHEET={idle:{src:'assets/majes-idle.png?v=20261016a',n:20},talk:{src:'assets/majes-talk.png?v=20261016a',n:40}};
+ const SHEET={idle:{src:'assets/majes-idle.png?v=20261016c',n:20},talk:{src:'assets/majes-talk.png?v=20261016c',n:40}};
  // 周りに浮かべる小さな形（点・輪・線・角）。位置・大きさ・速さは毎回無作為
  let bits='';
  for(let i=0;i<16;i++){
@@ -35,13 +42,18 @@
  p.innerHTML='<div class="mj-head">'+HOLO+'<div class="mj-name">agentMAJES<small>受付・ご案内</small></div><button type="button" class="mj-close" aria-label="閉じる">×</button></div>'
   +'<div class="mj-log" aria-live="polite"></div>'
   +'<div class="mj-line" hidden><button type="button" class="mj-linebtn">LINE 登録はこちら</button>'
-  +'<div class="mj-lbox" hidden><img class="qr" src="assets/line-qr.svg?v=20261016a" alt="LINE 友だち追加の QR コード" width="120" height="120">'
+  +'<div class="mj-lbox" hidden><img class="qr" src="assets/line-qr.svg?v=20261016c" alt="LINE 友だち追加の QR コード" width="120" height="120">'
   +'<div class="lb"><div class="lid">ID <b>@947auqhk</b><button type="button" class="cp">コピー</button></div>'
   +'<a class="lopen" href="https://line.me/R/ti/p/@947auqhk" target="_blank" rel="noopener">LINE を開いて友だち追加</a>'
   +'<small>QR を読み取るか、ID を LINE の検索に貼り付けてください。フルネームをお伝えいただくと、ここでの会話を LINE へ申し送りします。</small></div></div></div>'
+  +'<div class="mj-faq"><button type="button" class="mj-faqbtn" aria-expanded="false">よくある質問はこちら👆</button><div class="mj-faqlist" hidden></div></div>'
   +'<form class="mj-form"><textarea rows="1" maxlength="300" placeholder="ご質問をどうぞ" aria-label="ご質問"></textarea><button type="submit">送る</button></form>'
   +'<p class="mj-note"><span class="pcw">shift＋↩︎ でチャット内の改行ができます。</span>会話の内容はページを閉じるまで維持されます。</p>';
  document.body.append(tab,p);
+ // よくある質問の一覧
+ const faqBtn=p.querySelector('.mj-faqbtn'),faqBox=p.querySelector('.mj-faqlist');
+ faqList.forEach(q=>{const b=document.createElement('button');b.type='button';b.textContent=q;b.addEventListener('click',()=>{faqBox.hidden=true;faqBtn.setAttribute('aria-expanded','false');const i=p.querySelector('.mj-form textarea');i.value=q;p.querySelector('.mj-form').requestSubmit();});faqBox.append(b);});
+ faqBtn.addEventListener('click',()=>{faqBox.hidden=!faqBox.hidden;faqBtn.setAttribute('aria-expanded',String(!faqBox.hidden));});
  const log=p.querySelector('.mj-log'),form=p.querySelector('.mj-form'),inp=form.querySelector('textarea'),holo=p.querySelector('.mj-holo'),lineBox=p.querySelector('.mj-line');
  // 「LINE 登録はこちら」→ QR と ID の枠を開く。「コピー」→ ID を写す
  const lbox=lineBox.querySelector('.mj-lbox');

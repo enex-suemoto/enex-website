@@ -789,3 +789,12 @@ footer .fbtn a{margin-left:0}
 /* つかみ：横一列・80% */
 .page .hook.one{font-size:clamp(16px,1.92vw,24px)}
 @media (min-width:901px){.page .hook.one{white-space:nowrap;max-width:none}}
+
+/* MAJES の窓：よくある質問 */
+.mj-faq{margin:0 16px 8px}
+.mj-faqbtn{display:block;width:100%;border:1px solid #373eb9;background:#fff;color:#373eb9;font:700 13px/1 "Noto Sans JP",sans-serif;padding:10px;border-radius:999px;cursor:pointer;letter-spacing:.04em}
+.mj-faqbtn[aria-expanded="true"]{background:#373eb9;color:#fff}
+.mj-faqlist{display:flex;flex-direction:column;gap:6px;margin-top:8px;max-height:220px;overflow:auto}
+.mj-faqlist button{text-align:left;border:1px solid rgba(55,62,185,.3);background:rgba(55,62,185,.05);color:#2a2e6e;font:400 12.5px/1.6 "Noto Sans JP",sans-serif;padding:8px 12px;border-radius:10px;cursor:pointer}
+.mj-faqlist button:hover{background:rgba(55,62,185,.12)}
+.mj-faqlist[hidden]{display:none}
