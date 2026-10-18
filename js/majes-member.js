@@ -121,7 +121,36 @@
   if(!send){status('マイクを押して話しかけてください');return;}
   const wav=toWav(chunks,ac.sampleRate);chunks=[];
   const fd=new FormData();fd.append('audio',wav,'voice.wav');
-  ask(()=>api('/member/voice',{method:'POST',body:fd}),true);
+  askStream(fd);
+ }
+ // Sclass：文が届くたびに順に声で流す（最初の文からすぐ話し始める）
+ async function askStream(fd){
+  busy=true;const w=bub('a wait','聞いています…');status('聞いています…');
+  const queue=[];let playingChain=Promise.resolve(),reply=null,limit=false,ab=null;
+  const enqueue=(b64)=>{playingChain=playingChain.then(()=>play(b64));return playingChain;};
+  try{
+   const h={};if(M&&M.token)h.Authorization='Bearer '+M.token;
+   const r=await fetch(API+'/member/voice2',{method:'POST',body:fd,headers:h});
+   if(r.status===401){M=null;saveM();throw Object.assign(new Error('ログインが切れました。LINE で「ログイン」とお送りください。'),{status:401});}
+   if(!r.ok||!r.body){const j=await r.json().catch(()=>({}));throw new Error(j.detail||'通信できませんでした');}
+   const rd=r.body.getReader(),dec=new TextDecoder();let buf='';
+   while(true){
+    const {done,value}=await rd.read();if(done)break;
+    buf+=dec.decode(value,{stream:true});let i;
+    while((i=buf.indexOf('\n'))>=0){
+     const ln=buf.slice(0,i).trim();buf=buf.slice(i+1);if(!ln)continue;
+     let j;try{j=JSON.parse(ln);}catch(e){continue;}
+     if(j.type==='heard'){w.remove();if(j.text)bub('u',j.text);status('考えています…');}
+     else if(j.type==='sentence'){if(!ab){ab=bub('a','');}ab.textContent+=(ab.textContent?'\n':'')+j.text;status('お話ししています…');if(j.audio)enqueue(j.audio);}
+     else if(j.type==='done'){reply=j.reply;limit=!!j.limit_reached;if(j.notice&&ab){/* 既に文として流れている */}}
+    }
+   }
+   await playingChain;w.remove();
+   if(limit)callChk.checked=false;
+   status(callChk.checked&&!limit?'続けてどうぞ':'マイクを押して話しかけてください');
+   busy=false;
+   if(callChk.checked&&!limit&&!box.hidden)listen();
+  }catch(e){w.remove();bub('a note',e.message);status('マイクを押して話しかけてください');busy=false;if(e.status===401)show();}
  }
  function toWav(parts,rate){
   let n=0;parts.forEach(p=>n+=p.length);const all=new Float32Array(n);let o=0;parts.forEach(p=>{all.set(p,o);o+=p.length;});
