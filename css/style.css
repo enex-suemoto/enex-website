@@ -833,3 +833,12 @@ body.mjm-on{overflow:hidden}
 .mjm-form input{flex:1;font-size:16px;padding:10px 12px;border:1px solid #c9cbe0;border-radius:10px}
 .mjm-form button{border:0;background:#3a3d7e;color:#fff;border-radius:10px;padding:0 14px;font-weight:700;cursor:pointer}
 @media (max-width:600px){.mjm{padding:0}.mjm-card{max-width:none;height:100%;border-radius:0}.mjm-log{max-height:none}}
+/* AI エージェントのページ（2026-10-18 の組み替え）：冒頭のボタン、4 枚の役割、呼び出しの例 */
+.herobtns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.herobtns button.btn{cursor:pointer;font-family:inherit}
+.hook.two{margin-bottom:10px}
+.agents.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:700px){.agents.four{grid-template-columns:1fr}}
+.trynext .ex{font-size:13px;opacity:.9;margin-right:auto}
+.herobtns .btn.s{border:1px solid #3a3d7e;color:#3a3d7e;background:transparent}
+.herobtns .btn.p{border:0}
