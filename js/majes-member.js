@@ -69,7 +69,7 @@
   try{
    const j=await api('/member/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:t})});
    M={token:j.token,name:j.name,exp:j.expires_at};saveM();show();
-  }catch(e){show();guide.querySelector('.mjm-lead').textContent=e.message;}
+  }catch(e){if(M){show();return;}show();guide.querySelector('.mjm-lead').textContent=e.message;}  // ログイン済みならリンクの使い回しでもそのまま開く
  })();
 
  // ---- 文字で送る ----
