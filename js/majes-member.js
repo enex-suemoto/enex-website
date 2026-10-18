@@ -109,7 +109,7 @@
    let s=0;for(let i=0;i<d.length;i+=4)s+=d[i]*d[i];const rms=Math.sqrt(s/(d.length/4));
    const now=performance.now();
    if(rms>0.02){heardVoice=true;lastVoice=now;}
-   if(heardVoice&&now-lastVoice>1300)finish(true);
+   if(heardVoice&&now-lastVoice>800)finish(true);
    else if(!heardVoice&&now-startAt>9000)finish(false);
    else if(now-startAt>40000)finish(true);
   };
