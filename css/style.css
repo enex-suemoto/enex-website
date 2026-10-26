@@ -862,3 +862,5 @@ body.mjm-on{overflow:hidden}
 @media (max-width:760px){.biz{min-height:0}.release{grid-template-columns:1fr}.release .rl{grid-column:auto}}
 .release.top{margin:18px 0 0}
 .release.top+.biz3{margin-top:18px}
+/* 2026-10-26 スエモト：表の左の項目の欄を 1 行に収める（パソコン・タブレット） */
+@media (min-width:601px){.ptable td:first-child{white-space:nowrap}}
