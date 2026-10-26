@@ -845,3 +845,20 @@ body.mjm-on{overflow:hidden}
 
 /* 2026-10-26 ヘッダーに AI-OCR を足したので、スマホでは HOME を隠す（ロゴからトップへ戻れる） */
 @media (max-width:600px){header.top nav a.nh{display:none}}
+
+/* 2026-10-26 スエモト決定：事業の枠の高さをそろえ、AI-OCR を横長で際立たせる。ホームに AI-OCR の横帯 */
+.biz{display:flex;flex-direction:column;min-height:196px}
+.biz .more{margin-top:auto;padding-top:10px}
+.biz.wide{grid-column:1/-1;min-height:0;border:3px solid #373eb9}
+.biz.wide .bn{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.biz.wide .since{font-size:14px;font-weight:700;color:#fb7132;letter-spacing:.06em}
+.biz .bq.row{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline}
+.biz .bq.row b{flex-basis:100%}
+.release{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px 22px;margin-top:18px;padding:20px 24px;border:3px solid #fb7132;border-radius:16px;background:#fff;text-decoration:none;color:inherit}
+.release .rl{grid-column:1/-1;font-size:12.5px;font-weight:700;letter-spacing:.14em;color:#fb7132}
+.release .rt{font-size:22px;font-weight:900;color:#3a3d7e}
+.release .rd{font-size:14px;line-height:1.7;color:rgba(0,0,0,.72)}
+.release .go{font-size:13px;font-weight:700;color:#fb7132;white-space:nowrap}
+@media (max-width:760px){.biz{min-height:0}.release{grid-template-columns:1fr}.release .rl{grid-column:auto}}
+.release.top{margin:18px 0 0}
+.release.top+.biz3{margin-top:18px}
