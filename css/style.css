@@ -842,3 +842,6 @@ body.mjm-on{overflow:hidden}
 .trynext .ex{font-size:13px;opacity:.9;margin-right:auto}
 .herobtns .btn.s{border:1px solid #3a3d7e;color:#3a3d7e;background:transparent}
 .herobtns .btn.p{border:0}
+
+/* 2026-10-26 ヘッダーに AI-OCR を足したので、スマホでは HOME を隠す（ロゴからトップへ戻れる） */
+@media (max-width:600px){header.top nav a.nh{display:none}}
